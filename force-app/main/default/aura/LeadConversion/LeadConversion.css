@@ -1,0 +1,82 @@
+.THIS.sticky-header {
+    position: fixed;
+    margin-top:-16px;
+    width: 95%;
+    background-color: white;
+    padding: 10px;
+    z-index: 1000; 
+    font-size: 22px;
+    text-align: center;
+}
+
+.THIS .modal-footer {
+    position: fixed;
+    bottom: 11%;
+    margin-left:-32px;
+    width: 100%;
+    background-color: #f1f1f1;
+    padding: 10px;
+    z-index: 1000;
+}
+
+.THIS .container{
+     position: relative;
+}
+.THIS .row{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: stretch;
+}
+
+.THIS .row .column{
+    width: 50%;
+}
+
+.THIS .bg-gary{
+    background: #f8f8f8;
+}
+.THIS .bg-white{
+     background-color: #fff !important;
+}
+
+.THIS .divider{
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    height: 50%;
+    line-height: 0;
+    text-align: center;
+    transform: translateX(-50%);
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    color: rgba(0,0,0,.85);
+}
+
+.THIS .divider:after, .THIS .divider:before{
+    position: absolute;
+    left: 50%;
+    content: '';
+    z-index: 3;
+    border-left: 1px solid rgba(34,36,38,.15);
+    border-right: 1px solid rgba(255,255,255,.1);
+    width: 0%;
+    height: calc(100% - 1rem);
+}
+.THIS .divider:after {
+    top: auto;
+    bottom: 0;
+}
+.THIS .divider:before{
+    top: -100%;
+}
+.THIS .header {
+    display: none;
+}

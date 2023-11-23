@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Hybrid bicycle</fullName>
+        <default>false</default>
+        <label>Hybrid bicycle</label>
+    </customValue>
+    <customValue>
+        <fullName>Road bicycle</fullName>
+        <default>false</default>
+        <label>Road bicycle</label>
+    </customValue>
+    <customValue>
+        <fullName>Folding bicycle</fullName>
+        <default>false</default>
+        <label>Folding bicycle</label>
+    </customValue>
+    <customValue>
+        <fullName>Mountain bicycle</fullName>
+        <default>false</default>
+        <label>Mountain bicycle</label>
+    </customValue>
+    <customValue>
+        <fullName>Track bicycle</fullName>
+        <default>false</default>
+        <label>Track bicycle</label>
+    </customValue>
+    <masterLabel>Product Type</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

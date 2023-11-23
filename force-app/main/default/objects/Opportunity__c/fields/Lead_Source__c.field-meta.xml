@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Lead_Source__c</fullName>
+    <externalId>false</externalId>
+    <label>Lead Source</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Web</fullName>
+                <default>false</default>
+                <label>Web</label>
+            </value>
+            <value>
+                <fullName>Phone Inquiry</fullName>
+                <default>false</default>
+                <label>Phone Inquiry</label>
+            </value>
+            <value>
+                <fullName>Partner Referral</fullName>
+                <default>false</default>
+                <label>Partner Referral</label>
+            </value>
+            <value>
+                <fullName>External Referral</fullName>
+                <default>false</default>
+                <label>External Referral</label>
+            </value>
+            <value>
+                <fullName>Partner</fullName>
+                <default>false</default>
+                <label>Partner</label>
+            </value>
+            <value>
+                <fullName>Public Relations</fullName>
+                <default>false</default>
+                <label>Public Relations</label>
+            </value>
+            <value>
+                <fullName>Trade Show</fullName>
+                <default>false</default>
+                <label>Trade Show</label>
+            </value>
+            <value>
+                <fullName>Word of mouth</fullName>
+                <default>false</default>
+                <label>Word of mouth</label>
+            </value>
+            <value>
+                <fullName>Employee Referral</fullName>
+                <default>false</default>
+                <label>Employee Referral</label>
+            </value>
+            <value>
+                <fullName>Purchased List</fullName>
+                <default>false</default>
+                <label>Purchased List</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

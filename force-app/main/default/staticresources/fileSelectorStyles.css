@@ -1,0 +1,24 @@
+.customFileUploadCls .slds-slds-form-element__control{
+  margin-top: -20px;
+}
+
+.customFileUploadCls .slds-file-selector__dropzone{
+	border: none;
+  }
+
+.customFileUploadCls  .slds-form-element__control {
+  margin-top: -18px;
+}
+
+.customFileUploadCls .slds-file-selector__button {
+  color: white;
+  background-color: #0176D3;
+}
+
+.customFileUploadCls .slds-file-selector__text{
+	display: none;
+}
+
+.custoMarginTop1 .slds-form-element__control{
+    margin-top: 2px;
+}

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Deviation_Type__c</fullName>
+    <externalId>false</externalId>
+    <label>Deviation Type</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>KYC Documents</fullName>
+                <default>false</default>
+                <label>KYC Documents</label>
+            </value>
+            <value>
+                <fullName>Market Reputation</fullName>
+                <default>false</default>
+                <label>Market Reputation</label>
+            </value>
+            <value>
+                <fullName>Legal Proceeding</fullName>
+                <default>false</default>
+                <label>Legal Proceeding</label>
+            </value>
+            <value>
+                <fullName>ROI Deviation</fullName>
+                <default>false</default>
+                <label>ROI Deviation</label>
+            </value>
+            <value>
+                <fullName>Negative Zone</fullName>
+                <default>false</default>
+                <label>Negative Zone</label>
+            </value>
+            <value>
+                <fullName>Clean Dealer</fullName>
+                <default>false</default>
+                <label>Clean Dealer</label>
+            </value>
+            <value>
+                <fullName>Less ROI Score</fullName>
+                <default>false</default>
+                <label>Less ROI Score</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

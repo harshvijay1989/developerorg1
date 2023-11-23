@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Register form1</name>
+    <style>none</style>
+    <subject>Register form1</subject>
+    <textOnly>Registration Page
+
+
+
+Firstname
+
+Middlename:
+
+Lastname:
+
+Course :   Course BCA BBA B.Tech MBA MCA M.Tech
+
+Gender :
+Male
+Female
+Other
+
+Phone :
+
+Address
+
+
+Email:
+
+
+Password:
+
+
+Re-type password:</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

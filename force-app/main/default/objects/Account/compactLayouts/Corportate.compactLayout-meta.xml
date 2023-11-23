@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Corportate</fullName>
+    <fields>Name</fields>
+    <fields>HMC_Dealer_Code__c</fields>
+    <fields>OwnerId</fields>
+    <fields>Phone</fields>
+    <fields>HMC_Contact_Email__c</fields>
+    <fields>HMC_Stage__c</fields>
+    <label>Corportate</label>
+</CompactLayout>

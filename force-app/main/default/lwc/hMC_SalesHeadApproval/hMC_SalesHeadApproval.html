@@ -1,0 +1,93 @@
+<template>
+    <div class="slds-box slds-box_xx-small">
+    <lightning-card  title="Deviation to Approve">
+
+    </lightning-card>
+    <br/>
+    
+    <template if:true={istaskpresent}>
+      <div if:true={isdeviationpresent}>
+        
+
+        <table class="slds-table slds-table_bordered slds-border_left slds-border_right">
+          <thead>
+            <tr class="slds-line-height_reset">
+              <th class="" scope="col">
+                <div class="slds-truncate" title="Pincode">Deviation Type</div>
+              </th>
+              <th class="" scope="col">
+                  <div class="slds-truncate" title="Dealer">Status</div>
+                </th>
+                <th class="" scope="col">
+                  <div class="slds-truncate" title="Action">Action</div>
+                </th>
+            </tr>
+          </thead>
+          <tbody>
+            <template for:each={deviation} for:item="row" for:index="index">
+              <tr key={row.Id}>
+                  <td class="slds-cell-wrap"><p style="white-space:normal">{row.Deviation_Type__c}</p></td>
+                  <td class="slds-cell-wrap"><p style="white-space:normal">{row.Deviation_Status__c}</p></td>
+                  <td class="slds-cell-wrap">
+                      <!--lightning-button variant="brand-outline" data-index={index} label="Approve" title="Successful action" onclick={handleClick} value={row.Id} class="slds-m-left_x-small" name="Approve" disabled={row.isEnable}></lightning-button>
+                      <lightning-button variant="destructive-text" data-index={index} label="Reject" title="Successful action" onclick={handleClick} value={row.Id} class="slds-m-left_x-small" name="Reject" disabled={row.isEnable}></lightning-button>-->
+                      <lightning-combobox
+                          data-index={index}
+                          name="progress"
+                          label="Status"
+                          value={value}
+                          placeholder=""
+                          options={options}
+                          onchange={handleChange} >
+                        </lightning-combobox>
+                    </td>
+                    <td class="slds-cell-wrap"><lightning-input type="text"  data-index={index} label="Enter comments" onchange={handlecomments} value={row.HMC_Comments__c}></lightning-input></p></td>
+              </tr>
+            </template>
+          </tbody>
+        </table>
+        <br/>
+      <br/>
+      <div class="slds-clearfix">
+        <lightning-button variant="brand-outline" label="Submit" title="Submit" onclick={handleClickSubmit} class="slds-m-left_x-small slds-align_absolute-center"></lightning-button>
+      </div>
+      
+      </div>
+      <div if:false={isdeviationpresent}>
+        <p>No Deviations present . Please approve/Reject Dealer to proceed.</p>
+        
+        <!--lightning-button variant="brand-outline" label="Approve" title="Approve" onclick={handleClickApprove} class="slds-m-left_x-small slds-align_absolute-center"></lightning-button>&nbsp; &nbsp;
+        <lightning-button variant="brand-outline" label="Reject" title="Reject" onclick={handleClickReject} class="slds-m-left_x-small slds-align_absolute-center"></lightning-button>-->
+            <div  class="slds-grid slds-no-flex">
+              <div class="slds-size_5-of-12" >
+              </div>
+              <div class="slds-size_1-of-12" >
+                <lightning-button variant="brand-outline" label="Approve" title="Approve" onclick={handleClickApprove} class="slds-m-left_x-small slds-align_absolute-center"></lightning-button>
+              </div>
+              <div class="slds-size_1-of-12" >
+                <lightning-button variant="brand-outline" label="Reject" title="Reject" onclick={handleClickReject} class="slds-m-left_x-small slds-align_absolute-center"></lightning-button>
+              </div>
+              <div class="slds-size_5-of-12" >
+              </div>
+          </div>
+      </div>
+      <template if:true={isROIDev}>
+        <div>
+          <!-- <lightning-accordion allow-multiple-sections-open>
+        <lightning-accordion-section name="" label="Click here to view ROI Calculation">
+          <c-h-M-C_-R-O-I_-Calculation record-id={recordId} disable-record={isroiPresent}>
+          </c-h-M-C_-R-O-I_-Calculation>
+        </lightning-accordion-section>
+          </lightning-accordion> -->
+        </div>
+          </template>
+    </template>
+      
+      <template if:false={istaskpresent}>
+        <div class="slds-m-left_x-small slds-align_absolute-center">
+          <p><b>No Deviation task present</b><br></p>
+        </div>
+      </template>
+      </div>
+      
+</template>

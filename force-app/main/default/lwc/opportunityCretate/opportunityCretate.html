@@ -1,0 +1,96 @@
+<template>
+
+	<lightning-button variant="base" label="labelName" title="titleName" onclick={handleClick}></lightning-button>
+	<template if:true={showNewPage}>
+		<section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-8"
+			class="slds-modal slds-fade-in-open">
+			<div class="slds-modal__container">
+				<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeNewModal}>
+                            <lightning-icon icon-name="utility:close"
+                                alternative-text="close"
+                                variant="inverse"
+                                size="small"></lightning-icon>
+                            <span class="slds-assistive-text">Close</span>    
+                    </button>
+				<div class="slds-modal__header">
+					<h1 id="modal-heading-08" class="slds-modal__title slds-hyphenate" tabindex="-1">Modal header</h1>
+				</div>
+				<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-89">
+					<lightning-record-form object-api-name="Opportunity__c" layout-type="Full" columns="2" mode="edit"
+						record-type-id="0121m000000DscMAAS" onerror={handleFormError} onsubmit={closeNewModal}
+						oncancel={closeModal}>
+					</lightning-record-form>
+
+				</div>
+			</div>
+		</section>
+		<div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+	</template>
+
+	<lightning-button variant="base" label="labelName" title="titleName" onclick={handleClickNEW}></lightning-button>
+	<template if:true={shownewpage2}>
+		<section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-8"
+			class="slds-modal slds-fade-in-open">
+			<div class="slds-modal__container">
+				<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeNewModal}>
+                            <lightning-icon icon-name="utility:close"
+                                alternative-text="close"
+                                variant="inverse"
+                                size="small"></lightning-icon>
+                            <span class="slds-assistive-text">Close</span>    
+                    </button>
+				<div class="slds-modal__header">
+					<h1 id="modal-heading-09" class="slds-modal__title slds-hyphenate" tabindex="-1">New Product</h1>
+				</div>
+				<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-00">
+					<div class="slds-grid slds-wrap">
+						<div class="slds-col slds-large-size_6-of-12 slds-medium-size_6-of-12 slds-size_6-of-12">
+							<lightning-input type="text" variant="standard" name="name" label="Product Name"
+								placeholder="" onchange={handleProductName}>
+							</lightning-input>
+						</div>
+						<div class="slds-col slds-large-size_6-of-12 slds-medium-size_6-of-12 slds-size_6-of-12">
+							<lightning-input type="checkbox" variant="standard" name="name" label="Active?"
+								placeholder="" onclick={handleActive} class="slds-m-top_medium slds-m-left_large" ></lightning-input>
+						</div>
+					</div>
+					<div class="slds-grid slds-wrap">
+						<div class="slds-col slds-large-size_6-of-12 slds-medium-size_6-of-12 slds-size_6-of-12">
+							<lightning-input type="text" variant="standard" name="name" label="Product code"
+								placeholder="" onchange={handleProductCode}>
+							</lightning-input>
+						</div>
+						<div class="slds-col slds-large-size_6-of-12 slds-medium-size_6-of-12 slds-size_6-of-12">
+							<lightning-combobox name="progress" label="Status" value={value}
+								placeholder="Select Progress" options={options} onchange={handleProductType} class="slds-m-left_large" >
+							</lightning-combobox>
+						</div>
+					</div>
+					<div class="slds-grid slds-wrap">
+						<div class="slds-col slds-large-size_6-of-12 slds-medium-size_6-of-12 slds-size_6-of-12">
+							<lightning-input type="text" variant="standard" name="name" label="Unit Price"
+								placeholder="" pattern="[0-9]*" onchange={handleUnitPrice}>
+							</lightning-input>
+
+
+						</div>
+						<div class="slds-col slds-large-size_6-of-12 slds-medium-size_6-of-12 slds-size_6-of-12">
+							<lightning-textarea name="inputname" label="Product Description" placeholder="type here..."
+								value="" onchange={handleproductdes} class="slds-m-left_large" ></lightning-textarea>
+						</div>
+
+					</div>
+
+
+				</div>
+				<div class="slds-modal__footer">
+					<button class="slds-button slds-button_neutral" aria-label="Cancel and close">Cancel</button>
+					<button class="slds-button slds-button_brand" onclick={handleSave}>Save</button>
+				</div>
+
+			</div>
+		</section>
+		<div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+	</template>
+
+</template>

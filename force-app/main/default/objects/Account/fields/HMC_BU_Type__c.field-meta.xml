@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>HMC_BU_Type__c</fullName>
+    <externalId>false</externalId>
+    <label>BU Type</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Hero</fullName>
+                <default>false</default>
+                <label>Hero</label>
+            </value>
+            <value>
+                <fullName>Lectro</fullName>
+                <default>false</default>
+                <label>Lectro</label>
+            </value>
+            <value>
+                <fullName>Firefox</fullName>
+                <default>false</default>
+                <label>Firefox</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

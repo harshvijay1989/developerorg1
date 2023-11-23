@@ -1,0 +1,31 @@
+<aura:component access="global" controller="AuraLookupController">
+    
+    <aura:attribute access="public" type="List" name="selection" default="[]" required="true"/>
+    <aura:attribute access="public" type="List" name="errors" default="[]"/>
+    
+    
+    <aura:attribute access="public" type="String" name="sObjectName" required="true"/>
+    <aura:attribute access="public" type="String" name="label"/>
+    <aura:attribute access="public" type="String" name="placeholder" default="Search Salesforce"/>
+    <aura:attribute access="public" type="Boolean" name="isMultiEntry" default="false"/>
+    <!---Object Info -->
+    <aura:attribute access="global" type="String" name="sObjectApiName" required="true" description="Salesforce Object API Name" />
+    <aura:attribute access="global" type="String" name="fieldApiName" required="true" description="Object main field name" />
+    <aura:attribute access="global" type="String" name="subFieldApiName" description="Object sub field api name" />
+    
+    <aura:registerEvent name="onSelected" type="c:LookupSelectionEvent" description="Optional component event fired when a selection is made. Can be used for managing errors attribute on change." />
+    
+    
+    <c:AuraCustomLookup label="{!v.label}" 
+                        placeholder="{!v.placeholder}" 
+                        sObjectApiName="{!v.sObjectApiName}"
+                        fieldApiName="{!v.fieldApiName}"
+                        subFieldApiName="{!v.subFieldApiName}"
+                        selection="{!v.selection}" 
+                        onSearch="{!c.lookupSearch}" 
+                        onSelection="{!c.clearErrorsOnChange}" 
+                        errors="{!v.errors}" 
+                        isMultiEntry="{!v.isMultiEntry}"/>
+    
+    
+</aura:component>

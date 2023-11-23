@@ -1,0 +1,10 @@
+<template>
+  	<template if:false={vflink}>
+		<div class="exampleHolder">
+        <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+    </div>
+	</template>
+	<template if:true={vflink}>
+		<iframe src={vflink} height="500px" width="100%;"></iframe>
+	</template>
+</template>

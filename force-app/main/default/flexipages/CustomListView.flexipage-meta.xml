@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlexiPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>fieldSetNameContainer</name>
+                    <value>Contact_FieldSet</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>objectNameContainer</name>
+                    <value>Contact</value>
+                </componentInstanceProperties>
+                <componentName>listViewContainer</componentName>
+                <identifier>c_listViewContainer</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>main</name>
+        <type>Region</type>
+    </flexiPageRegions>
+    <masterLabel>CustomListView</masterLabel>
+    <template>
+        <name>flexipage:defaultAppHomeTemplate</name>
+    </template>
+    <type>AppPage</type>
+</FlexiPage>

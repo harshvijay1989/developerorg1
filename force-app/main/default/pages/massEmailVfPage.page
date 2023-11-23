@@ -1,0 +1,26 @@
+<apex:page controller="massMailPreviewController" showHeader="false" title="Quotation PDF" renderAs="pdf" action="{!callPDF}" standardStylesheets="false" applyHtmlTag="false" applyBodyTag="false">
+    <html>
+        <head>
+            <style type="text/CSS">
+                @page {
+                size:landscape;
+                @bottom-right {
+                content: "Page " counter(page) " of " counter(pages);
+                }
+                }
+            </style>
+        </head>
+        <body>
+            <apex:form >
+                <p>
+                    {!contentVersionId}
+                </p>
+                <apex:param name="contentVersionId" assignTo="{!contentVersionId}" value="{!$CurrentPage.parameters.contentVersionId}" />
+                <!--<apex:param name="contentVersionId" assignTo="{!contentVersionId}" value="{!$CurrentPage.parameters.id}" />-->
+                <apex:outputPanel >
+                    <apex:outputText value="{!pdfURL}" escape="false"/>
+                </apex:outputPanel>
+            </apex:form>
+        </body>
+    </html>
+</apex:page>

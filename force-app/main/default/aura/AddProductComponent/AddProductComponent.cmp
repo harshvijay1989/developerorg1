@@ -1,0 +1,520 @@
+<aura:component implements="force:lightningQuickActionWithoutHeader,force:hasRecordId" >
+    <aura:html tag="style">
+        .slds-modal__content{padding: 0;height:auto!important;max-height:unset!important;width: 100%;}
+        .cuf-content{padding: 0!important;}
+        
+        @media (min-width: 48em){
+        .slds-modal__container {p
+        margin: 0 auto;
+        width: 100%;
+        max-width: 75rem;
+        min-width: 75rem;
+        }
+        }
+    </aura:html>
+    
+    <div>
+        <div class="classicTModel product-modal-parent slds-scrollable_x slds-scrollable_y">  
+            <div class="slds-modal__header slds-is-relative">
+                                   
+                <div class="modal-header slds-modal__header"> 
+                    <h1 class="slds-text-heading_medium" Style = "font-size: xx-large"> <Strong>Manage Order </Strong></h1>
+                    <br/>
+                    <lightning:layout class = "slds-scrollable_x slds-scrollable_y">
+                        <lightning:layoutItem size="12" 
+                                              smallDeviceSize="6"
+                                              padding="around-small"> 
+                            <div  style="text-align: left;" class="slds-text-heading_small">
+                                <!--h1 class="slds-text-heading_small" >{!v.productDataWrapper.objOfOpportunity.Name}</h1>-->
+                                <!--h1 class="slds-text-heading_small" >Dealer       : {!v.productDataWrapper.objOfOpportunity.Account.Name}</h1>
+                                <h1 class="slds-text-heading_small" style="float:left">Credit Limit : <lightning:formattedNumber value="{!v.creditLimt}" maximumFractionDigits="2"></lightning:formattedNumber></h1><br/>
+                                <h1 class="slds-text-heading_small" style="float:left">Credit Exposure : <lightning:formattedNumber value="{!v.creditLimt}" maximumFractionDigits="2"></lightning:formattedNumber></h1>-->
+                                
+                                    Dealer       : MTN 2<br/>
+                                    Credit Limit : 1,05,94,352.03<br/>
+                                    Credit Exposure : 1,05,94,352.03
+                                
+                                
+                            </div> 
+                        </lightning:layoutItem>
+                        <lightning:layoutItem size="12" 
+                                              smallDeviceSize="6"
+                                              padding="around-small"> 
+                            
+                        </lightning:layoutItem>
+                       
+                        
+                    </lightning:layout>                      
+                    <div id="showErrorProductCart" class="slds-text-color_error " style="display:none;text-align:center;">
+						<h1>Error</h1>
+                    </div>
+                    
+                    
+                    <lightning:layout class = "slds-scrollable_x slds-scrollable_y">
+                        <lightning:layoutItem size="12" 
+                                              smallDeviceSize="6"
+                                              padding="around-small"> 
+                            <h1 class="slds-text-heading_medium slds-align_absolute-center"> <Strong> Bill To Address</Strong></h1>
+                            
+                            <h1 class="slds-text-heading_small slds-align_absolute-center" style = "text-align-last: left" >&nbsp;&nbsp;Jaipur</h1>
+                            <h1 class="slds-text-heading_small slds-align_absolute-center" style = "text-align-last: left">&nbsp;&nbsp;Rajasthan , 302001</h1>
+                            <h1 class="slds-text-heading_small slds-align_absolute-center" style = "text-align-last: left">&nbsp;&nbsp;India</h1>
+                            
+                        </lightning:layoutItem>
+                       
+                        <lightning:layoutItem size="12" 
+                                              smallDeviceSize="6"
+                                              padding="around-small"> 
+                            <h1 class="slds-text-heading_medium slds-align_absolute-center"> <Strong> Ship To Address</Strong></h1>
+                            
+                            
+                            <h1 class="slds-text-heading_small slds-align_absolute-center" style = "text-align-last: left" >&nbsp;&nbsp;Kolkata</h1>
+                            <h1 class="slds-text-heading_small slds-align_absolute-center" style = "text-align-last: left">&nbsp;&nbsp;West Bengal , 700010</h1>
+                            <h1 class="slds-text-heading_small slds-align_absolute-center" style = "text-align-last: left">&nbsp;&nbsp;India</h1>
+                                                      
+                            
+                        </lightning:layoutItem>
+                    </lightning:layout>
+                  
+                </div>
+                
+                <div class="custom-modal-content slds-p-around_medium">
+                    
+                    <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                        <thead>
+                            <tr class="slds-text-heading_label ">
+                              
+                                <th class="slds-truncate slds-is-sortable thAlign">
+                                    <div class="slds-truncate" title="Product Type">PRODUCT TYPE</div>
+                                </th>
+                                <th class="slds-truncate slds-is-sortable thAlign">
+                                    <div class="slds-truncate" title="Model">Model     </div>
+                                </th>
+                                <th class="slds-truncate slds-is-sortable thAlign">
+                                    <div class="slds-truncate" title="OFFERING">OFFERING</div>
+                                    
+                                </th>
+                                <th class="slds-truncate slds-is-sortable thAlign">
+                                    <div class="slds-truncate" title="QUANTITY">QUANTITY</div>
+                                </th>
+                                
+                                <th class="slds-truncate slds-is-sortable thAlign">
+                                    <div class="slds-truncate" title="Base Price">Base Price</div>
+                                </th>
+                                <th class="slds-truncate slds-is-sortable thAlign">
+                                    <div class="slds-truncate" title="Total Discount">Discount</div>
+                                </th>
+                                <th class="slds-truncate slds-is-sortable thAlign">
+                                    <div class="slds-truncate" title="Tax">Tax</div>
+                                </th>
+                                <th class="slds-truncate slds-is-sortable thAlign">
+                                    <div class="slds-truncate" title="Net Amount">Net Amount</div>
+                                </th>
+                              
+                               <th>
+                                </th>
+                                
+                                <th class="slds-truncate slds-is-sortable thAlign">
+                                    <div class="slds-truncate" title="Product Name">ACTION</div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <aura:iteration items="{!v.OliWrapperList}" var="wrap" indexVar="index">
+                                <tr class="configured-select-heading">
+                                   
+                                    <td >
+                                        <div id="{!index}">
+                                            <lightning:select value="{!wrap.AICMA}" variant="label-hidden" label="{!index}" disabled="{!v.enableButton}" onchange="{!c.handleaicmaChange}">
+                                                <option value="" label="Please Select">
+                                                </option>
+                                                <aura:iteration items="{!v.productDataWrapper.AICMAList}" var="AICMA">
+                                                    <option value="{!AICMA}" label="{!AICMA}" selected="{!AICMA==wrap.AICMA}" >{!AICMA}
+                                                    </option>
+                                                </aura:iteration>
+                                            </lightning:select>
+                                        </div>
+                                    </td>
+                                    <td >
+                                        <div id="{!index}">
+                                           
+                                            <lightning:select value="{!wrap.model}" variant="label-hidden" label="{!index}" onchange="{!c.onModelChange}" disabled="{!v.enableButton}">
+                                                <option value="" label="Please Select">
+                                                </option>
+                                                <aura:iteration items="{!wrap.models}" var="model">
+                                                    <option value="{!model}" label="{!model}" selected="{!model==wrap.model}" >{!model}
+                                                    </option>
+                                                </aura:iteration>
+                                            </lightning:select>
+                                            
+                                        </div>
+                                    </td>
+                                    <td class="custom-lookup">
+                                        <aura:if isTrue="{!wrap.AICMA == ''}">
+                                            <div id="{!index}">
+                                                <lightning:select variant="label-hidden" label="{!v.index}" disabled="{!v.enableButton}" >
+                                                    <option value="" label="Please Select">
+                                                    </option>
+                                                </lightning:select>
+                                            </div>
+                                        </aura:if>
+                                        <aura:if isTrue="{!wrap.AICMA != ''}">
+                                            <div id="{!index}">
+                                                <lightning:select variant="label-hidden" label="{!v.index}" onchange="{!c.handleComponentEvent1}" value="{!wrap.productId}" disabled="{!v.enableButton}">
+                                                    <option value="" label="Please Select">
+                                                    </option>
+                                                    <aura:iteration items="{!wrap.lstProductsFilter}" var="prodType">
+                                                        <option value="{!prodType.Id}" label="{!prodType.Name}" selected="{!prodType.Id==wrap.productId}">{!prodType.Name}
+                                                        </option>
+                                                    </aura:iteration>
+                                                </lightning:select>
+                                                
+                                            </div>
+                                            <aura:if isTrue="{!and(wrap.product.Name != '' , wrap.product.Name != undefined )}">
+                                                <lightning:formattedUrl value="{!'/'+wrap.productId}"  label="{!wrap.product.ProductCode}" target="_blank" style="position: absolute;" />
+                                            </aura:if>
+                                           
+                                        </aura:if>
+                                    </td>
+                                    <td >
+                                        <div id="{!index}">
+                                        <lightning:input  type="number" name="productQuantity" aura:id="inputCmp" variant="label-hidden" label="Type" value="{!wrap.quantity}"  disabled="{!v.enableButton}"/> 
+                                        </div>
+                                    </td>
+                                    
+                                    
+                                    <aura:if isTrue="{!v.productDataWrapper.objOfOpportunity.Account.RecordType.Name != 'Retail'}">
+                                        <td >
+                                            <div id="{!index}">
+                                                <lightning:input name="BasePrice" variant="label-hidden" label="Type" value="{!wrap.BasePrice}"  disabled="true"/>
+                                            </div>
+                                        </td>
+                                        <td >
+                                            <div id="{!index}">
+                                                <lightning:input name="TotalDiscount" variant="label-hidden" label="Type" value="{!wrap.TotalDiscount}"  disabled="true"/> 
+                                            </div>
+                                        </td>
+                                        
+                                        <td >
+                                            <div id="{!index}">
+                                                <lightning:input name="Tax" variant="label-hidden" label="Tax" value="{!wrap.product.Tax_Percentage__c}"  disabled="true"/> 
+                                            </div>
+                                        </td>
+                                        <td >
+                                            <div id="{!index}">
+                                                <lightning:input name="NetAmount" variant="label-hidden" label="Type" value="{!wrap.NetAmount}"  disabled="true"/> 
+                                            </div>
+                                        </td>
+                                        <aura:set attribute="else">
+                                            <td >
+                                                <div id="{!index}">
+                                                    <lightning:input name="BasePrice" variant="label-hidden" label="Type" value="{!wrap.BasePrice}"  disabled="false"/>
+                                                </div>
+                                            </td>
+                                            <td >
+                                                <div id="{!index}">
+                                                    <lightning:input name="TotalDiscount" variant="label-hidden" label="Type" value="{!wrap.TotalDiscount}"  disabled="false"/> 
+                                                </div>
+                                            </td>
+                                            
+                                            <td >
+                                                <div id="{!index}">
+                                                    <lightning:input name="Tax" variant="label-hidden" label="Tax" value="{!wrap.product.Tax_Percentage__c}"  disabled="false"/> 
+                                                </div>
+                                            </td>
+                                            <td >
+                                                <div id="{!index}">
+                                                    <lightning:input name="NetAmount" variant="label-hidden" label="Type" value="{!wrap.NetAmount}"  disabled="false"/> 
+                                                </div>
+                                            </td>
+                                        </aura:set>
+                                    </aura:if> 
+                                     <td>
+                                        <aura:if isTrue="{!wrap.StockFlag != 'Zero'}">
+                                            <lightning:icon class="icn" variant="{!wrap.StockFlag}" iconName="utility:favorite" size="small" />
+                                        </aura:if>
+                                        <aura:if isTrue="{!wrap.StockFlag == 'Zero'}">
+                                            <lightning:icon class="icnnn"  iconName="utility:favorite" size="small" />
+                                        </aura:if>
+                                    </td>
+                                    <td class="custom-image-card">
+                                        <lightning:fileCard fileId="{!wrap.fileId}" hideDescription	="true"/>
+                                    </td>
+                                    <td class="slds-truncate slds-is-sortable thAlign">
+                                       <a onclick="{!c.remove}" data-record="{!index}">
+                                        <lightning:icon iconName="utility:delete" size="small" alternativeText="Delete"/>
+                                        <span class="slds-assistive-text">Delete</span>
+                                    </a>
+                                    </td>
+                                </tr>
+                                
+                            </aura:iteration>
+                        </tbody>
+                    </table>
+                </div>
+               
+                <aura:if isTrue="{!$Browser.isPhone}">
+                    <aura:set attribute="else">
+                        <lightning:layout class = "slds-scrollable_x slds-scrollable_y">
+                            
+                            <lightning:layoutItem size="12" 
+                                                  smallDeviceSize="4"
+                                                  padding="around-small">
+                                <div  style="float:left">
+                                        <strong>Note : </strong> Kindly collect 100% advance payment
+                                </div>
+                            </lightning:layoutItem>
+                            
+                            <lightning:layoutItem size="12" 
+                                                  smallDeviceSize="6"
+                                                  padding="around-small">
+                                <div  style="text-align: Right;" class="slds-text-heading_small">
+                                    Total Price : 0.00<br/>
+                                    Total Quantity   :  0<br/>
+                                </div>
+                            </lightning:layoutItem>
+                            
+                        </lightning:layout>
+                    </aura:set>
+                </aura:if>
+               
+                
+                <aura:if isTrue="{!v.isModalOpen}">
+                                        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                        <div class="slds-modal__container">
+                            <!-- Modal/Popup Box Header Starts here-->
+                            <header class="slds-modal__header">
+                                <lightning:buttonIcon iconName="utility:close"
+                                                      onclick="{! c.closeModel }"
+                                                      alternativeText="close"
+                                                      variant="bare-inverse"
+                                                      class="slds-modal__close"/>
+                                <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Quote Preview</h2>
+                            </header>
+                            <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                                <iframe src="{! '/apex/HMC_OrderPreview?Id=' + v.recordId}" width="100%" height="500px;" frameBorder="0"/>
+                            </div>
+                            <footer class="slds-modal__footer">
+                                <lightning:button variant="neutral" value="{!v.recordId}"
+                                                  label="Send Email"
+                                                  title="SendEmail"
+                                                  onclick="{! c.SendEmail }"/>
+                                <lightning:button variant="neutral"
+                                                  label="Cancel"
+                                                  title="Cancel"
+                                                  onclick="{! c.closeModel }"/>
+                                <lightning:button variant="brand"
+                                                  label="OK"
+                                                  title="OK"
+                                                  onclick="{!c.SavePdf}"/>
+                            </footer>
+                        </div>
+                    </section>
+                    <div class="slds-backdrop slds-backdrop_open"></div>
+                </aura:if>
+                
+                <aura:if isTrue="{!v.isModalOpenCreditLimit}">
+                    
+                    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                        <div class="slds-modal__container">
+                            <!-- Modal/Popup Box Header Starts here-->
+                            <header class="slds-modal__header">
+                                <lightning:buttonIcon iconName="utility:close"
+                                                      onclick="{! c.closeModelCredit }"
+                                                      alternativeText="close"
+                                                      variant="bare-inverse"
+                                                      class="slds-modal__close"/>
+                                <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Quote Preview</h2>
+                            </header>
+                            <!--Modal/Popup Box Body Starts here-->
+                            <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                                <p>Total amount is more than credit Limit, Please click on the Yes to continue</p>p>
+                            </div>
+                            <!--Modal/Popup Box Footer Starts here-->
+                            <footer class="slds-modal__footer">
+                                <lightning:button variant="neutral"
+                                                  label="Yes"
+                                                  title="Yes"
+                                                  onclick="{! c.closeModelCredit }"/>
+                                <lightning:button variant="neutral"
+                                                  label="Cancel"
+                                                  title="Cancel"
+                                                  onclick="{! c.closeModelCredit }"/>
+                                
+                            </footer>
+                        </div>
+                    </section>
+                    <div class="slds-backdrop slds-backdrop_open"></div>
+                </aura:if>
+                <!-- Pop up for credit Limit Ends here-->
+                <aura:if isTrue="{!v.isModalOpenSKU}">
+                    
+                    <!-- Modal/Popup Box starts here-->
+                    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                        <div class="slds-modal__container">
+                            <!-- Modal/Popup Box Header Starts here-->
+                            <header class="slds-modal__header">
+                                <lightning:buttonIcon iconName="utility:close"
+                                                      onclick="{! c.closeModelsku }"
+                                                      alternativeText="close"
+                                                      variant="bare-inverse"
+                                                      class="slds-modal__close"/>
+                                <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Add Product By SKU</h2>
+                            </header>
+                            <!--Modal/Popup Box Body Starts here-->
+                            <div class="slds-modal__content slds-input-has-icon slds-input-has-icon--right"                                                                                                                                                                                                         >
+                                <lightning:card title="Product Search" iconName="standard:search">
+                                    <!--div class="slds-form slds-p-around_x-small">
+                                                <lightning:input
+                                                    label="Search"
+                                                    variant="label-hidden"
+                                                    value="{!v.searchTerm}"
+                                                    placeholder="Search by SKU"
+                                                    onchange="{!c.onSearchTermChange}"/>
+                                            </div>-->
+                                    <lightning:layout multipleRows="true" class="search-container">
+                                        <lightning:layoutitem class="search-input-box-wrapper" size="9" mediumDeviceSize="10" largeDeviceSize="3">
+                                            <lightning:input class="search-input-box" type="search" label="Search" name="search" placeholder="Search by SKU" value="{!v.searchTerm}" />
+                                        </lightning:layoutitem>
+                                        <lightning:layoutItem flexibility="auto" class="search-input-box-wrapper" size="3" mediumDeviceSize="2" largeDeviceSize="1">
+                                            <button class="slds-button_brand slds-button go-button" onclick="{!c.onSearchTermChange}">Search</button>
+                                        </lightning:layoutItem>
+                                    </lightning:layout>
+                                </lightning:card>
+                                <aura:if isTrue="{!v.isprodpresentSKU}">
+                                    <div class="custom-modal-content slds-p-around_medium">
+                                        <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                                            <thead>
+                                                <tr class="slds-text-heading_label ">
+                                                    <th class="slds-truncate slds-is-sortable thAlign">
+                                                        <div class="slds-truncate" title="Product Type">SELECT</div>
+                                                    </th>
+                                                    <th class="slds-truncate slds-is-sortable thAlign">
+                                                        <div class="slds-truncate" title="Product Type">Product Code</div>
+                                                    </th>
+                                                    <th class="slds-truncate slds-is-sortable thAlign">
+                                                        <div class="slds-truncate" title="Product Type">Model</div>
+                                                    </th>
+                                                    <th class="slds-truncate slds-is-sortable thAlign">
+                                                        <div class="slds-truncate" title="Product Type">PRODUCT TYPE</div>
+                                                    </th>
+                                                    
+                                                    <th class="slds-truncate slds-is-sortable thAlign">
+                                                        <div class="slds-truncate" title="Product Description">OFFERING(SUMMARY)</div>
+                                                        
+                                                    </th>
+                                                   
+                                                   
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <aura:iteration items="{!v.lstSKUproduct}" var="wrap" indexVar="index">
+                                                    <tr class="configured-select-heading">
+                                                        <th>
+                                                            <label class="slds-checkbox">
+                                                                <ui:inputCheckbox aura:id="prodSku" value="" text="{!wrap.Name}"/>
+                                                                <span class="slds-checkbox--faux" />
+                                                                <span class="slds-form-element__label"></span>
+                                                            </label>
+                                                        </th>
+                                                        <td >
+                                                            <ui:outputText  aura:id="text-input-id-1" class="field" value="{!wrap.ProductCode}"/> 
+                                                        </td>
+                                                        <td >
+                                                            <ui:outputText  aura:id="text-input-id-1" class="field" value="{!wrap.HMC_MODEL__c}"/> 
+                                                        </td>
+                                                        <td >
+                                                            <ui:outputText  aura:id="text-input-id-1" class="field" value="{!wrap.HMC_AICMA__c}"/> 
+                                                        </td>
+                                                        <td >
+                                                            <ui:outputText  aura:id="text-input-id-1" class="field" value="{!wrap.Name}"/> 
+                                                        </td>
+                                                      
+                                                    </tr>
+                                                </aura:iteration>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </aura:if>
+                            </div>
+                            <footer class="slds-modal__footer">
+                                <lightning:button variant="neutral"
+                                                  label="Add"
+                                                  title="Add"
+                                                  onclick="{! c.AddSelectedProd }"/>
+                                <lightning:button variant="neutral"
+                                                  label="Cancel"
+                                                  title="Cancel"
+                                                  onclick="{! c.closeModelsku }"/>
+                            </footer>
+                        </div>
+                    </section>
+                    <div class="slds-backdrop slds-backdrop_open"></div>
+                </aura:if>
+                <div class="modal-footer slds-modal__footer">
+                    <aura:if isTrue="{!$Browser.isPhone}">
+                        <lightning:layout multipleRows="true">
+                             <lightning:layoutItem size="12" 
+                                                  smallDeviceSize="4"
+                                                  padding="around-small">
+                         
+                         <div class="slds-border_bottom slds-box">
+                           <div  style="text-align: Right;" class="slds-text-heading_small">
+                            Total Price : {!v.Total}<br/>
+                            Total Quantity   :  {!v.TotalQuantity}<br/>
+                        </div>
+                                 </div>
+                            </lightning:layoutItem>
+                            <lightning:layoutItem size="12" 
+                                                  smallDeviceSize="4"
+                                                  padding="around-small">
+                                <div>
+                                    <button class="slds-button slds-button_neutral" style="float: left;" type="button"  onclick="{!c.addRow}" disabled="{!v.enableButton}">Add Item</button> 
+                                </div>
+                            </lightning:layoutItem>
+                            <lightning:layoutItem size="12" 
+                                                  smallDeviceSize="4"
+                                                  padding="around-small">
+								<button class="slds-button slds-button_brand" style="float: left;" type="button" onclick="{!c.saveOpportunityLineItem}" disabled="{!v.enableButton}"> Save </button>
+                            </lightning:layoutItem>
+                            
+                            <lightning:layoutItem size="12" 
+                                                  smallDeviceSize="4"
+                                                  padding="around-small">
+                                
+                                
+                                   <button class="slds-button slds-button_neutral" style="float:right;" type="button" onclick="{!c.redirectToOpportunity}">Cancel</button>
+                            </lightning:layoutItem>
+                            <lightning:layoutItem size="12" 
+                                                  smallDeviceSize="4"
+                                                  padding="around-small">
+                                
+                            </lightning:layoutItem>
+                        </lightning:layout>
+                        <aura:set attribute="else">
+                            <lightning:layout>
+                                <lightning:layoutItem size="12" 
+                                                      smallDeviceSize="6"
+                                                      padding="around-small">
+                                    <div  style="text-align: left;">
+                                        <button class="slds-button slds-button--neutral" style="float:left; text-align: left;" onclick="{!c.addRow}" disabled="{!v.enableButton}">Add Item</button> 
+                                    </div>
+                                </lightning:layoutItem>
+                                <lightning:layoutItem size="12" 
+                                                      smallDeviceSize="6"
+                                                      padding="around-small">
+                                    <div  style="width:max-content">
+                                        <div style="margin-left:400px">
+                                        <button class="slds-button slds-button_neutral" style="width:max-content; : right;" type="button" onclick="{!c.redirectToOpportunity}">Cancel</button>
+                                        <button class="slds-button slds-button_brand" style="width:max-content; text-align: right;" type="button" onclick="{!c.saveOpportunityLineItem}">Save</button>
+                                       </div>
+                                    </div>
+                                </lightning:layoutItem>
+                            </lightning:layout>
+                        </aura:set>
+                    </aura:if>
+                </div>
+            </div>
+        </div>
+    </div>
+</aura:component>

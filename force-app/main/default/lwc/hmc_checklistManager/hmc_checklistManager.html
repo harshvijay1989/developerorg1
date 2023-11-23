@@ -1,0 +1,382 @@
+<template>
+	<div class="pull-right">
+		<a href={url} class="slds-button slds-button_outline-brand button-menu-mobile" target="_blank">Back</a>
+		<span class="clearfix"></span>
+	</div>
+	<div class="slds-box slds-box_xx-small">
+		<lightning-card title="Manage Checklist" class="lightning-input-field">
+			<!--template if:true={isLoading}>
+             <lightning-spinner alternative-text="Loading" size="small" variant="brand"></lightning-spinner>
+          </template-->
+			<div class="spinner">
+				<template if:true={isLoading}>
+					<lightning-spinner alternative-text="Loading" variant="brand" size="large">
+					</lightning-spinner>
+				</template>
+			</div>
+
+
+<!-- step 1 to 3 show this path    -->
+<template if:false={disableRecord}>
+<template if:true={newPathHide}>
+			<lightning-progress-indicator current-step={currentStep} type="path" variant="base">
+				<!--<lightning-progress-step label="ROI Data" value="1"></lightning-progress-step>-->
+				<lightning-progress-step label="Submit for Approval" value="2"></lightning-progress-step>
+				<lightning-progress-step label="Advance Payment" value="3"></lightning-progress-step>
+				<lightning-progress-step label="Document Verification" value="4"></lightning-progress-step>
+			</lightning-progress-indicator>
+</template>
+</template>
+
+<!-- step 4 show this path    -->
+<template if:true={disableRecord}>
+<!-- <template if:true={oldPathHide}> -->
+				<div class="slds-path">
+					<div class="slds-grid slds-path__track">
+						<div class="slds-grid slds-path__scroller-container">
+							<div class="slds-path__scroller">
+								<div class="slds-path__scroller_inner">
+									<ul class="slds-path__nav" role="listbox" aria-orientation="horizontal">
+										<li class="slds-path__item slds-is-complete" role="presentation">
+											<a aria-selected="false" class="slds-path__link" href="#" id="path-31"
+												role="option" tabindex="-1">
+												<span class="slds-path__stage">
+<svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
+</svg>
+<span class="slds-assistive-text">Stage Complete</span>
+												</span>
+												<span class="slds-path__title">ROI Data</span>
+											</a>
+										</li>
+										<li class="slds-path__item slds-is-complete" role="presentation">
+											<a aria-selected="false" class="slds-path__link" href="#" id="path-32"
+												role="option" tabindex="-1">
+												<span class="slds-path__stage">
+<svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
+</svg>
+<span class="slds-assistive-text">Stage Complete</span>
+												</span>
+												<span class="slds-path__title">Submit for Approval</span>
+											</a>
+										</li>
+										<li class="slds-path__item slds-is-complete" role="presentation">
+											<a aria-selected="false" class="slds-path__link" href="#" id="path-33"
+												role="option" tabindex="-1">
+												<span class="slds-path__stage">
+<svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
+</svg>
+<span class="slds-assistive-text">Stage Complete</span>
+												</span>
+												<span class="slds-path__title">Advance Payment</span>
+											</a>
+										</li>
+										<li class="slds-path__item slds-is-won slds-is-active slds-is-current"
+											role="presentation">
+											<a aria-selected="true" class="slds-path__link" href="#" id="path-35"
+												role="option" tabindex="0">
+												<span class="slds-path__stage">
+<svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
+</svg>
+<span class="slds-assistive-text">Current Stage:</span>
+												</span>
+												<span class="slds-path__title">Docoment Verification</span>
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+		<!--	</template> -->
+</template>
+
+			<!--<div class="slds-card__body slds-card__body_inner">
+		<div class="slds-path">
+			<div class="slds-grid slds-path__track">
+				<div class="slds-grid slds-path__scroller-container">
+					<div class="slds-path__scroller" role="application">
+						<div class="slds-path__scroller_inner">
+							<ul class="slds-path__nav" role="listbox" aria-orientation="horizontal">
+								<template if:true={picklistValues}>
+									<template for:each={picklistValues} for:item="item">
+										
+										<li data-value={item.pItem.value} onclick={handleSelect} key={item} class="slds-path__item slds-is-current slds-is-active" role="presentation">
+											<a data-value={item.pItem.value} onclick={handleSelect} aria-selected="true" class="slds-path__link" href="javascript:void(0);" id={item.pItem.value} role="option"
+												tabindex="0">
+												<span class="slds-path__stage">
+													<lightning-icon icon-name="utility:check" alternative-text="Warning!" variant="inverse" size="x-small"></lightning-icon>
+													<span class="slds-assistive-text">Current Stage:</span>
+												</span>
+												<span class="slds-path__title">Test</span>
+											</a>
+										</li>
+										
+									</template>
+								</template>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="slds-grid slds-path__action">
+					<span class="slds-path__stage-name">Stage: Unqualified</span>
+					<button class="slds-button slds-button_brand slds-path__mark-complete" onclick={handleMarkAsSelected}>
+						<lightning-icon icon-name="utility:check" alternative-text="Warning!" variant="inverse" size="x-small"></lightning-icon> &nbsp;
+						Mark Status as Complete
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+!-->
+			<template if:true={disableRecord}>
+				<div class="slds-notify slds-notify_alert slds-alert_warning" role="alert">
+					<span class="slds-assistive-text">warning</span>
+					<span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed">
+                   <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                      <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#warning"></use>
+                   </svg>
+                </span>
+					<h2>Checklist already completed</h2>
+					<br/>
+             </div>
+			</template>
+
+			<template if:true={disableAbort}>
+				<div class="slds-notify slds-notify_alert slds-alert_warning" role="alert">
+					<span class="slds-assistive-text">warning</span>
+					<span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed">
+                  <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                     <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#warning"></use>
+                  </svg>
+               </span>
+					<h2>Process Aborted due to Legal Proceedings</h2>
+					<br/>
+            </div>
+			</template>
+			<br/>
+			<br/>
+			<p class="slds-p-horizontal_small">
+
+				<template if:true={isDeviationtask}>
+					<p><b>Sales Head should approve deviations to proceed future</b><br></p>
+				</template>
+
+
+				<template if:true={isroivisible}>
+					<!-- <lightning-record-edit-form record-id={recordId}
+                object-api-name={objectApiName}
+                 class="recordForm"
+                onsuccess={handleSuccess} onsubmit={handleSubmitRoiFields}>
+
+                <lightning-input-field field-name="HMC_Monthly_Sales__c"  name="sales" class="validate" value={monthlysales} disabled={disableRecord} required="true"></lightning-input-field>
+                <lightning-input-field field-name="HMC_Security_Deposit__c" name="deposit" class="validate" value={securitdeposit} disabled={disableRecord} required="true"></lightning-input-field>
+                <lightning-input-field field-name="HMC_Net_Worth__c" name="worth"  class="validate" value={networth} disabled={disableRecord} required="true"></lightning-input-field>
+                <lightning-input-field field-name="HMC_Business_Experience__c" name="experience"  class="validate" value={businessexp} disabled={disableRecord} required="true"></lightning-input-field>
+                <lightning-input-field field-name="HMC_NumberofyearsincycleTrade_Business__c" name="trade"  class="validate" value={noOfyrstrade} disabled={disableRecord} required="true"></lightning-input-field>
+                <div class="slds-clearfix slds-align_absolute-center">
+                  <lightning-button class="slds-m-top_small" type="submit" label="Save" disabled={disableRecord}></lightning-button>
+               </div>
+             </lightning-record-edit-form>-->
+					<c-h-M-C_-R-O-I_-Calculation record-id={recordId}>
+					</c-h-M-C_-R-O-I_-Calculation>
+				</template>
+
+				<template if:true={iskyc}>
+					<!--lightning-record-edit-form record-id={recordId}
+                object-api-name={objectApiName}
+                 class="recordForm" >
+                <lightning-input-field field-name="HMC_KYC_Document__c"  name="kyc" class="validate" value={kycdoucement} disabled={disableRecord}></lightning-input-field>
+                <lightning-input-field field-name="HMC_Market_Reputation__c" name="market" class="validate" value={marketreputation} disabled={disableRecord}></lightning-input-field>
+                <lightning-input-field field-name="HMC_Legal_Proceeding__c" name="legal"  class="validate" value={legaldoc} disabled={disableRecord}></lightning-input-field>
+                <lightning-input-field field-name="HMC_ROI_Score1__c" name="roiscore"  class="validate" value={roiscore} disabled="true"></lightning-input-field>
+             </lightning-record-edit-form>-->
+					<!--lightning-input  name="kyc" label="KYC " class="validate" value={kycdoucement} disabled={disableRecord}></lightning-input>-->
+
+
+					<lightning-combobox data-index={index} name="progress" label="AREA ID" value={area} placeholder=""
+						options={optionsarea} onchange={handleChangearea} disabled>
+					</lightning-combobox>
+					<!-- disabled={disableAbort} -->
+					<lightning-combobox data-index={index} name="progress" required label="CUSTOMER GROUPS"
+						value={customer_Group} placeholder="" options={optionsCustomer_Group}
+						onchange={handleChangecustomer_Group} disabled={disableAbort}>
+					</lightning-combobox>
+
+                     <lightning-input name="gstNumber" label="GST Number" class="validate" value={gstNumber} onchange={handlegstNumber} pattern="^([0][1-9]|[1-2][0-9]|[3][0-7])([a-zA-Z]{5}[0-9]{4}[a-zA-Z]{1}[1-9a-zA-Z]{1}[zZ]{1}[0-9a-zA-Z]{1})+$"  message-when-pattern-mismatch="Please enter a valid gst" required>
+					</lightning-input>
+
+					 <lightning-input name="panCardNumber" label="Pan Card Number" class="validate" value={panCardNumber} onchange={handlepancardNumber} pattern="[A-Za-z]{5}[0-9]{4}[A-z]{1}" message-when-pattern-mismatch="Please enter a valid  pan number" required>
+					</lightning-input>
+
+					<lightning-combobox data-index={index} name="progress" label="KYC" value={kyc} placeholder=""
+						options={optionskyc} onchange={handleChangekyc} disabled={disableAbort} >
+					</lightning-combobox  >
+					<lightning-combobox data-index={index} name="progress" label="Market Reputation"
+						value={marketreputation1} placeholder="" options={optionsmarket} onchange={handleChangemarket}
+						disabled={disableAbort} >
+					</lightning-combobox>
+					<lightning-combobox data-index={index} name="progress" label="Is Any Legal Case Pending ?"
+						value={legalprice} placeholder="" options={optionslegal} onchange={handleChangelegal}
+						disabled={disableAbort} >
+					</lightning-combobox>
+					<!--<lightning-input name="ROI" label="ROI Score " class="validate" value={roi} disabled="true">
+					</lightning-input> -->
+					<template if:false={disableAbort}>
+						<div class="slds-clearfix">
+							<div class="slds-align_absolute-center">
+								<lightning-button class="slds-m-top_small slds-p-around_medium"
+									onclick={handlesaveRecordkyc} label="Save"></lightning-button>
+								<lightning-button class="slds-m-top_small" type="submit" label="Submit"
+									onclick={handleRecordSubmit}>
+								</lightning-button>
+							</div>
+						</div>
+					</template>
+				</template>
+
+				<template if:true={isadvancepatment}>
+					<!--lightning-record-edit-form record-id={recordId}
+                  object-api-name={objectApiName}
+                   class="recordForm"
+                  onsuccess={handleSuccesspayment} onsubmit={handleSubmitpayment}>
+                  <lightning-input-field field-name="HMC_Payment_Status__c"  name="payment" class="validate" value={paymentstatus} disabled={disableRecord}></lightning-input-field>
+                  <div class="slds-clearfix slds-align_absolute-center">
+                     <lightning-button class="slds-m-top_small" type="submit" label="Save" disabled={disableRecord}></lightning-button>
+                  </div>
+               </lightning-record-edit-form>-->
+					<lightning-file-upload label="Upload Receipt Files" name="fileUploader" accept={acceptedFormats}
+						record-id={recordId} onuploadfinished={handleUploadFinished} multiple>
+					</lightning-file-upload>
+
+					<lightning-combobox data-index={index} name="progress" label="Payment Status" value={paymentstatus}
+						placeholder="" options={optionspayment} onchange={handlepaymentstatus}>
+					</lightning-combobox>
+					<div>
+						<br/>
+						<lightning-button class="slds-m-top_small" type="submit" label="Save"
+							onclick={handlepaymentstatus12} disabled={disableRecord}></lightning-button>
+					</div>
+				</template>
+
+				<template if:true={isdocuments}>
+					<template if:true={isDocShowtextshow}>
+						<template if:false={disableRecord}>
+							<div class="slds-clearfix slds-align_absolute-center">
+								<p><Strong>Financial person will approve this activity.</Strong></p>
+							</div>
+						</template>
+					</template>
+					<lightning-input label="Comments" name="comments" class="validate" value={verficationcomments}
+						disabled={disableRecord} onchange={verficationcommentsValue} ></lightning-input>
+					<lightning-combobox data-index={index} name="progress" label="Verification Status"
+						value={verificationstatus} placeholder="" options={optionsDocument} onchange={handledocstatys}
+						disabled={disableRecord}>
+						<!--disabled={disableDocuRecord}-->
+					</lightning-combobox>
+					<div class="slds-clearfix slds-align_absolute-center">
+						<lightning-button class="slds-m-top_small" type="submit" label="Save"
+							onclick={handleDocstatusmethod} disabled={disableDocuRecord}></lightning-button>
+						<!--disabled={disableDocuRecord}-->
+					</div>
+					<br/>
+              </template>
+			</p>
+		</lightning-card>
+	</div>
+	<div>
+		<template if:true={isDeviation}>
+			<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-03" aria-modal="true"
+				aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+				<div class="slds-modal__container">
+					<!-- Modal/Popup Box Header Starts here-->
+					<!--Modal/Popup Box Body Starts here-->
+					<header class="slds-modal__header">
+						<lightning-button-icon icon-name="utility:close" class="slds-modal__close "
+							alternative-text="Close" title="Close" size="large" variant="bare-inverse"
+							onclick={handleCancel}>
+
+						</lightning-button-icon>
+						<h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Confirmation</h2>
+					</header>
+					<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+						<!--<template if:true={isvisiblepopup}>
+                      <p><b>Are you sure you want to proceed further...?</b><br></p>
+                      </template>-->
+					  <br/>
+					  <br/>
+						<p> &nbsp; &nbsp; &nbsp; &nbsp;<b>Are you sure you want to proceed for Deviatation approval...?</b><br></p>
+						<br/>
+						<br/>
+					</div>
+					<!--Modal/Popup Box Footer Starts here-->
+					<footer class="slds-modal__footer">
+						<center>
+						<button class="slds-button slds-button_neutral"  onclick={handleclose}>No</button>
+						<button class="slds-button slds-button_brand" onclick={handlesubmitrecord}>Yes</button>
+						</center>
+					</footer>
+				</div>
+			</section>
+			<div class="slds-backdrop slds-backdrop_open"></div>
+		</template>
+	</div>
+	<template if:true={islegalProceeding}>
+		<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+			aria-describedby="modal-content-id-2" class="slds-modal slds-fade-in-open">
+			<div class="slds-modal__container">
+				<header class="slds-modal__header">
+					<lightning-button-icon icon-name="utility:close" class="slds-modal__close " alternative-text="Close"
+						title="Close" size="large" variant="bare-inverse" onclick={handleCancel}>
+
+					</lightning-button-icon>
+					<h2 id="modal-heading-02" class="slds-modal__title slds-hyphenate">Confirmation</h2>
+				</header>
+				<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-2">
+					<br/>
+					<br/>
+					<p>&nbsp; &nbsp; &nbsp; &nbsp;<b>Legal proceeding exists , Do you wish to continue with deviation or abort the process with reason?</b><br></p>
+					<br/>
+					<br/>
+				</div>
+				<footer class="slds-modal__footer">
+					<center>
+					<button class="slds-button slds-button_neutral"  onclick={handledeviation}>Continue</button>
+					<button class="slds-button slds-button_brand" onclick={handleabort}>Abort</button>
+					</center>
+				</footer>
+			</div>
+		</section>
+		<div class="slds-backdrop slds-backdrop_open"></div>
+	</template>
+	<template if:true={showlegalreson}>
+		<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-02" aria-modal="true"
+			aria-describedby="modal-content-id-3" class="slds-modal slds-fade-in-open">
+			<div class="slds-modal__container">
+				<header class="slds-modal__header">
+					<lightning-button-icon icon-name="utility:close" class="slds-modal__close " alternative-text="Close"
+						title="Close" size="large" variant="bare-inverse" onclick={handleCancel}>
+
+					</lightning-button-icon>
+					<h2 id="modal-heading-03" class="slds-modal__title slds-hyphenate">Confirmation</h2>
+				</header>
+				<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-3">
+					<lightning-input label="Reject Reason" name="legalreason" class="validate" value={rejectreason}
+						disabled={disableRecord} required="true"></lightning-input>
+					<lightning-button class="slds-m-top_small" type="submit" label="Save" onclick={handledeviationrej}>
+					</lightning-button>
+					<!--div class="slds-clearfix slds-align_absolute-center">
+               <lightning-button class="slds-m-top_small" type="submit" label="Save"></lightning-button>
+                              </div>-->
+				</div>
+
+			</div>
+		</section>
+		<div class="slds-backdrop slds-backdrop_open"></div>
+	</template>
+</template>

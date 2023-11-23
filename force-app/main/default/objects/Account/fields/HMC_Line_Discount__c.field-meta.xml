@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>HMC_Line_Discount__c</fullName>
+    <externalId>false</externalId>
+    <label>Line Discount</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>LDG001</fullName>
+                <default>false</default>
+                <label>LDG001</label>
+            </value>
+            <value>
+                <fullName>LDG002</fullName>
+                <default>false</default>
+                <label>LDG002</label>
+            </value>
+            <value>
+                <fullName>LDG003</fullName>
+                <default>false</default>
+                <label>LDG003</label>
+            </value>
+            <value>
+                <fullName>LDG005</fullName>
+                <default>false</default>
+                <label>LDG005</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

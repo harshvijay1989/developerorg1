@@ -1,0 +1,94 @@
+<template>
+    <div class="slds-page-header slds-page-header_record-home">
+        <div class="slds-page-header__row">
+          <div class="slds-page-header__col-title">
+            <div class="slds-media">
+             
+            <div class="slds-media__figure">
+                <span class="slds-icon_container slds-icon-standard-account" title="Description of icon when needed">
+                   
+                    <!-- <use xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#account"></use> -->
+                     <lightning-icon icon-name={objectIconName} size="small" style="width: 30px !important; height: auto;"></lightning-icon>
+                    <span class="slds-assistive-text">Description of icon when needed</span>
+                    </span>
+              </div>
+              <div class="slds-media__body">
+                <div class="slds-page-header__name">
+                  <div class="slds-page-header__name-title">
+                    <h1>
+                      <span>{Title}</span>
+                      <span class="slds-page-header__title slds-truncate" title="Acme - 1,200 Widgets" >{Title}</span>
+                    </h1>
+                  </div>
+                </div>
+              </div>
+
+              <div class="slds-page-header__col-actions">
+                <div class="slds-page-header__controls">
+                  <div class="slds-page-header__control">
+                    <ul class="slds-button-group-list">
+                      <li>
+                        <template if:true={showAddProductButton}> 
+                       
+                          <!-- <lightning-button label="Add Product" title="Add Product" onclick={clickAddProductButton} class="slds-m-left_x-small"></lightning-button> -->
+                         </template>
+                        <lightning-button label="Edit" title="Edit" onclick={clickNeButton} class="slds-m-left_x-small"></lightning-button>
+                        <lightning-button label="Delete" title="Delete" onclick={clickDeleteButton} class="slds-m-left_x-small"></lightning-button>
+                      </li>
+                     </ul>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+        <div>
+        <lightning-record-edit-form record-id={recordId} object-api-name={Object} onsuccess={handleSuccess} onsubmit ={handleSubmit}>
+            <lightning-messages> </lightning-messages>
+        
+            <div class="slds-grid slds-gutters slds-p-left_small slds-grid slds-page-header__detail-row">
+         
+            <template for:each={separatedArray} for:item="field">
+              <div key={field.Id} style="">
+                  <ul>
+                    <div class="slds-col slds-p-left_xx-large" style="width:150px;">
+                      <label for="fieldid">{field}</label>
+                      <lightning-output-field  id="fieldid" field-name={field} variant="label-hidden" > </lightning-output-field>
+                    </div> 
+                  </ul>
+                </div>
+          </template>
+        </div>
+
+</lightning-record-edit-form>
+    </div>
+  </div>
+
+  <!-- ================== --> 
+  <template if:true={areDetailsVisible}>
+  <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01" class="slds-modal slds-fade-in-open slds-modal_small">
+    <div class="slds-modal__container">
+    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse">
+    <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+    </svg>
+    <span class="slds-assistive-text">Cancel and close</span>
+    </button>
+    <div class="slds-modal__header">
+    <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Delete</h1>
+    </div>
+    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+      
+      Are you sure you want to delete?
+    </div>
+    <div class="slds-modal__footer">
+      <lightning-button label="Cancel" title="Cancel" onclick={CancelButton} class="slds-m-left_x-small"></lightning-button>
+      <lightning-button label="Delete" title="Delete" onclick={DeleteButton} class="slds-m-left_x-small"></lightning-button>
+    </div>
+    </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+    </template>
+
+    
+</template>

@@ -1,0 +1,15 @@
+.tableScroll {
+    overflow: auto;
+    overflow-y: hidden;
+    height: 10rem;
+}
+@media all and (min-width: 576px) {
+    .THIS.mobileView{
+        padding: 2px 4px 2px 2px;
+        width: fit-content;
+        float: none;
+        overflow: scroll;
+
+    }
+    
+}

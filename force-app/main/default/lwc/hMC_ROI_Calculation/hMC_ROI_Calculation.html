@@ -1,0 +1,540 @@
+<template>
+    <lightning-card >
+        <div class="slds-m-around_medium mobileView slds-scrollable_x slds-scrollable_y">
+            
+         <!--lightning-record-edit-form record-id={recordId}
+            object-api-name={objectApiName}
+             class="recordForm"
+            onsuccess={handleSuccess}
+            onload={handleOnLoad}-->
+            <lightning-layout multiple-rows class = "slds-scrollable_x slds-scrollable_y">
+            <!--div class="slds-grid slds-no-flex ">
+                <div class="slds-size_6-of-12 "-->
+                    <lightning-layout-item size="12" 
+                    small-device-size="6"
+                    padding="around-small">   
+            <!--Annual Business-->
+          
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered" aria-label="Example default base table of Opportunities">
+                <thead>
+                <tr class="slds-line-height_reset">
+                <th class="slds-size_4-of-12" scope="col">
+                <div class="slds-truncate" title=""></div>
+                </th>
+                <th class="slds-size_4-of-12" scope="col">
+                    <div class="slds-truncate" title="Annually" >Annually</div>
+                    </th>
+                <th class="slds-size_4-of-12" scope="col">
+                <div class="slds-truncate" title="Monthly">Monthly</div>
+                </th>
+                
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr class="slds-hint-parent">
+                <td data-label="Expenditure">
+                <div class="slds-truncate" title="Annual Business Value">Annual Business Value</div>
+                </td>
+                
+                <td data-label="Annually">
+                <div class="slds-truncate mobileView " title="Annual Business Value Annually"><lightning-input style="width:100px" variant="label-hidden" onchange={handleonchangeAnnual} value={Annual} disabled={disableRecord}></lightning-input></div>
+                </td>
+                <td data-label="Monthly">
+                <div style="margin-top: -5%;" class="slds-truncate mobileView" title="Annual Business Value Monthly"><lightning-input  style="width:100px" type="number" value={MonthlyAnnualVar} disabled="true" step=".01"></lightning-input></div>
+                </td>
+                </tr>
+                </tbody>
+                </table>
+                
+                    <!--Annual Business END here-->
+                    </lightning-layout-item>
+                <!--/div>
+                <div class="slds-size_6-of-12 slds-scrollable_x slds-scrollable_y" -->
+                 <!--Total Investment--><lightning-layout-item size="12"
+          small-device-size="6"
+          padding="around-small">
+                <table class="slds-table slds-table_cell-buffer slds-table_bordered" aria-label="Example default base table of Opportunities">
+                    <thead>
+                     <!--   <div class="slds-grid slds-gutters" style = "!important;width: 100% !important;"></div-->
+                    <tr class="slds-line-height_reset">
+                    <th class="slds-size_3-of-12" scope="col">
+                    <div class="slds-truncate" title="Total Investment">Total Investment</div>
+                    </th>
+                    <th class="slds-size_3-of-12" scope="col">
+                        <div class="slds-truncate" title=""></div>
+                        </th>
+                    <th class="slds-size_3-of-12" scope="col">
+                    <div class="slds-truncate" title=""></div>
+                    </th>
+                    <th class="slds-size_3-of-12" scope="col">
+                        <div class="slds-truncate" title=""></div>
+                        </th>
+                    </tr>
+                   
+                    </thead>
+                    <tbody>
+                    
+                    <!--Stock-->    
+                    <tr class="slds-hint-parent">
+                    <td data-label="Expenditure">
+                    <div class="slds-truncate" title="Stock">Stock</div>
+                    </td>
+                    
+                    <td data-label="Monthly">
+                        <div style="margin-top: -5%;" class="slds-truncate" title="Stock Monthly"><lightning-input style = "width:100px" type="number" value={StockVar} disabled="true" step=".01"></lightning-input></div>
+                        </td>
+                        <td data-label="Monthly">
+                            <div style="margin-top: -5%;" class="slds-truncate" title="Stock Monthly"><lightning-input style = "width: 100px" type="number" value={StockVar} disabled="true" step=".01"></lightning-input></div>
+                            </td>
+                    <td data-label="Monthly">
+                    <div style="margin-top: -5%;" class="slds-truncate" title="2 Months"><lightning-input style = "width: 100px" type="text" value="2 Months" disabled="true" ></lightning-input></div>
+                    </td>
+                    </tr>
+
+                    <!--Company Credit-->    
+                    <tr class="slds-hint-parent">
+                        <td data-label="Expenditure">
+                        <div class="slds-truncate" title="Company Credit">Company Credit</div>
+                        </td>
+                        
+                        <td data-label="Monthly">
+                            <div style="margin-top: -5%;" class="slds-truncate" title="Company Credit Monthly"><lightning-input style = "width: 100px" type="number" value={CompanyCreditVar} disabled="true" step=".01"></lightning-input></div>
+                            </td>
+                            <td data-label="Monthly">
+                                <div style="margin-top: -5%;" class="slds-truncate" title="Company Credit Monthly"><lightning-input style = "width: 100px"  type="number" value={CompanyCreditVar} disabled="true" step=".01"></lightning-input></div>
+                                </td>
+                        <td data-label="Monthly">
+                        <div style="margin-top: -5%;" class="slds-truncate" title="1 Month"><lightning-input style = "width: 100px" type="text" value="1 Month" disabled="true" ></lightning-input></div>
+                        </td>
+                        </tr>
+
+                        <!--Net InvestMent-->    
+                    <tr class="slds-hint-parent">
+                        <td data-label="Expenditure">
+                        <div class="slds-truncate" title="Net InvestMent">Net InvestMent</div>
+                        </td>
+                        
+                        <td data-label="Monthly">
+                        <div style="margin-top: -5%;" class="slds-truncate" title="Net InvestMent"><lightning-input style = "width: 100px" type="number" value={InvestmentVar} disabled="true" step=".01"></lightning-input></div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        </tr>
+                    </tbody>
+                    </table>
+                    <!--Total Investment END here-->
+                <!--/div>
+            </div-->
+            </lightning-layout-item>
+        </lightning-layout>
+                 <!--Expenditure START here-->
+                 <div class = "slds-scrollable_x slds-scrollable_y">
+                    <!--lightning-layout multiple-rows class = "slds-scrollable_x slds-scrollable_y">
+                        <lightning-layout-item size="12"
+                                small-device-size="6" large-device-size="3"
+                                padding="around-small"-->
+                   <!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ Table Starts here $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-->              
+                  
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-scrollable_x slds-table_header-fixed_container tableScroll slds-scrollable_y " aria-label="Example default base table of Opportunities">
+                <thead>
+                <tr class="slds-line-height_reset">
+                <th class="" scope="col">
+                    <lightning-layout multiple-rows class = "slds-scrollable_x slds-scrollable_y">
+                            <lightning-layout-item size="12"
+                                    small-device-size="6"
+                                    padding="around-small">
+                                    <div class="slds-truncate" title="Expenditure">Expenditure</div>
+                            </lightning-layout-item>
+                            <lightning-layout-item size="12"
+                                    small-device-size="6"
+                                    padding="around-small">
+                            </lightning-layout-item>
+                    </lightning-layout>
+                </th>
+                <!--th class="" scope="col">
+                    <div class="slds-truncate" title=""></div>
+                    </th-->
+                <th class="" scope="col">
+                <div class="slds-truncate" title="Monthly">Monthly</div>
+                </th>
+                <th class="" scope="col">
+                <div class="slds-truncate" title="Annually">Annually</div>
+                </th>
+                <th class="" scope="col">
+                    <div class="slds-truncate" title=""></div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title=""></div>
+                        </th>
+                </tr>
+                </thead>
+                <tbody>
+
+                    <!--Manpower -->
+                <tr class="slds-hint-parent">
+                <td data-label="Expenditure">
+                <lightning-layout multiple-rows class = "slds-scrollable_x slds-scrollable_y">
+                    <lightning-layout-item size="12"
+                            small-device-size="6"
+                            padding="around-small">
+                            <div class="slds-truncate" title="Manpower">Manpower</div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12"
+                            small-device-size="6"
+                            padding="around-small">
+                    </lightning-layout-item>
+                </lightning-layout>
+                </td>
+               
+                <td data-label="Monthly">
+                <div class="slds-truncate mobileView" title="Manpower"><lightning-input style = "width: 100px; padding-left: 0;" variant="label-hidden" onchange={handleonchangemanpower} value={Manpower} disabled={disableRecord}></lightning-input></div>
+                </td>
+                <td data-label="Annually">
+                <div style="margin-top: -5%;" class="slds-truncate mobileView" title="Manpower"><lightning-input style = "width: 100px" type="text" value={manpowervar} disabled="true" ></lightning-input></div>
+                </td>
+                </tr>
+
+                 <!--Rent -->
+                <tr class="slds-hint-parent">
+                <td data-label="Expenditure">
+               
+                <lightning-layout multiple-rows class = "slds-scrollable_x slds-scrollable_y">
+                    <lightning-layout-item size="12"
+                            small-device-size="6"
+                            padding="around-small">
+                            <div class="slds-truncate mobileView" title="Rent">Rent</div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12"
+                            small-device-size="6"
+                            padding="around-small">
+                    </lightning-layout-item>
+                </lightning-layout>
+                </td>
+               
+                <td data-label="Monthly">
+                <div class="slds-truncate mobileView" title="Rent"><lightning-input style = "width: 100px; padding-left: 0;" variant="label-hidden" onchange={handleonchangeRent} value={Rent} disabled={disableRecord}></lightning-input></div>
+                </td>
+                <td data-label="Annually">
+                <div style="margin-top: -5%;" class="slds-truncate mobileView" title="Rent"><lightning-input style = "width: 100px" type="text"  value={Rentvar} disabled="true" ></lightning-input></div>
+                </td>
+                </tr>
+
+                 <!--Electricity -->
+                <tr class="slds-hint-parent">
+                    <td data-label="Expenditure">
+                   
+                    <lightning-layout multiple-rows class = "slds-scrollable_x slds-scrollable_y">
+                        <lightning-layout-item size="12"
+                                small-device-size="6"
+                                padding="around-small">
+                                <div class="slds-truncate mobileView" title="Electricity">Electricity</div>
+                        </lightning-layout-item>
+                        <lightning-layout-item size="12"
+                                small-device-size="6"
+                                padding="around-small">
+                        </lightning-layout-item>
+                    </lightning-layout>
+                    </td>
+                  
+                    <td data-label="Monthly">
+                    <div class="slds-truncate mobileView" title="Electricity"><lightning-input style = "width: 100px; padding-left: 0;" variant="label-hidden" onchange={handleonchangeElectricity} value={Electricity} disabled={disableRecord}></lightning-input></div>
+                    </td>
+                    <td data-label="Annually">
+                    <div style="margin-top: -5%;" class="slds-truncate mobileView" title="Electricity"> <lightning-input style = "width: 100px" type="text"  value={Electricityvar} disabled="true" ></lightning-input></div>
+                    </td>
+                    </tr>
+
+                    <!--Transportations -->
+                    <tr class="slds-hint-parent">
+                        <td data-label="Expenditure">
+                      
+                        <lightning-layout multiple-rows class = "slds-scrollable_x slds-scrollable_y">
+                            <lightning-layout-item size="12"
+                                    small-device-size="6"
+                                    padding="around-small">
+                                    <div class="slds-truncate mobileView" title="Transportation">Transportation</div>
+                            </lightning-layout-item>
+                            <lightning-layout-item size="12"
+                                    small-device-size="6"
+                                    padding="around-small">
+                            </lightning-layout-item>
+                        </lightning-layout>
+                        </td>
+                       
+                        <td data-label="Monthly">
+                        <div class="slds-truncate mobileView" title="Transportation"><lightning-input style = "width: 100px; padding-left: 0;" variant="label-hidden" onchange={handleonchangeTransport} value={Transport} disabled={disableRecord}></lightning-input></div>
+                        </td>
+                        <td data-label="Annually">
+                        <div style="margin-top: -5%;" class="slds-truncate mobileView" title="Transportation"><lightning-input style = "width: 100px" type="text" value={Transportvar} disabled="true" ></lightning-input></div>
+                        </td>
+                        </tr>
+                        
+                        <!--Bank Intrest -->
+                        <tr class="slds-hint-parent">
+                            <td data-label="Expenditure">
+                          
+                            <lightning-layout multiple-rows class = "slds-scrollable_x slds-scrollable_y">
+                                <lightning-layout-item size="12"
+                                        small-device-size="6"
+                                        padding="around-small">
+                                        <div class="slds-truncate mobileView" title="Bank Interest %">Bank Interest %</div>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="12"
+                                        small-device-size="6"
+                                        padding="around-small">
+                                        <div class="slds-truncate mobileView" title="Bank Interest %"><lightning-input style = "width: 100px" variant="label-hidden" onchange={handleonchangeBankIntrest} value={BankIntrest} disabled={disableRecord}></lightning-input></div>
+                                </lightning-layout-item>
+                            </lightning-layout>
+                            </td>
+                            <!--td data-label="Monthly">
+                                <div class="slds-truncate mobileView" title="b"><lightning-input style = "width: max-content" variant="label-hidden" onchange={handleonchangeBankIntrest} value={BankIntrest} disabled={disableRecord}></lightning-input></div>
+                                </td-->
+                            <td data-label="Monthly">
+                                <div style="margin-top: -5%;" class="slds-truncate mobileView" title=""><lightning-input style = "width: 100px; padding-left: 0;" type="text" value={BankIntrestvar} disabled="true" ></lightning-input></div>                            </td>
+                            <td data-label="Annually">
+                            </td>
+                        </tr> 
+
+                          <!--Other Overheads -->
+                        <tr class="slds-hint-parent">
+                            <td data-label="Expenditure">
+                           
+                            <lightning-layout multiple-rows class = "slds-scrollable_x slds-scrollable_y">
+                                <lightning-layout-item size="12"
+                                        small-device-size="6"
+                                        padding="around-small">
+                                        <div class="slds-truncate mobileView" title="Other Overheads">Other Overheads</div>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="12"
+                                        small-device-size="6"
+                                        padding="around-small">
+                                </lightning-layout-item>
+                            </lightning-layout>
+                            </td>
+                           
+                            <td data-label="Monthly">
+                            <div class="slds-truncate mobileView" title="Other Overheads"><lightning-input style = "width: 100px; padding-left: 0;" variant="label-hidden" onchange={handleonchangeoverhead} value={overhead} disabled={disableRecord}></lightning-input></div>
+                            </td>
+                            <td data-label="Annually">
+                            <div style="margin-top: -5%;" class="slds-truncate mobileView" title="Other Overheads"><lightning-input style = "width: 100px" type="text" value={overheadvar} disabled="true" ></lightning-input></div>
+                            </td>
+                            </tr>   
+                            
+                            <!--Discount -->
+                        <tr class="slds-hint-parent">
+                            <td data-label="Expenditure">
+                           
+                            <lightning-layout multiple-rows class = "slds-scrollable_x slds-scrollable_y">
+                                <lightning-layout-item size="12"
+                                        small-device-size="6"
+                                        padding="around-small">
+                                        <div class="slds-truncate mobileView" title="Discount %">Discount %</div>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="12"
+                                        small-device-size="6"
+                                        padding="around-small">
+                                        <div class="slds-truncate mobileView" title=""><lightning-input  style = "width: 100px" variant="label-hidden" onchange={handleonchangeDiscount} value={Discount} disabled={disableRecord}></lightning-input></div>
+                                </lightning-layout-item>
+                            </lightning-layout>
+                            </td>
+                            <!--td data-label="Monthly">
+                                </td-->
+                            <td data-label="Monthly">
+                                <div style="margin-top: -5%;" class="slds-truncate mobileView" title="Discount"><lightning-input style = "width: 100px; padding-left: 0;" type="number" value={discountvar} disabled="true" step=".01"></lightning-input></div>
+                            </td>
+                            <td data-label="Annually">
+                            </td>
+                        </tr> 
+                         <!--Net Exp -->
+                         <tr class="slds-hint-parent">
+                            <td data-label="Expenditure">
+                           
+                            <lightning-layout multiple-rows >
+                                <lightning-layout-item size="12"
+                                        small-device-size="6"
+                                        padding="around-small">
+                                        <div class="slds-truncate mobileView" title="Net Exp">Net Exp</div>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="12"
+                                        small-device-size="6"
+                                        padding="around-small">
+                                </lightning-layout-item>
+                            </lightning-layout>
+                            </td>
+                           
+                            <td data-label="Monthly">
+                                <div style="margin-top: -5%;" class="slds-truncate mobileView" title="Net Exp"><lightning-input style = "width: 100px; padding-left: 0;" type="number" value={TotalMonthlyvar} disabled="true" step=".01"></lightning-input></div>
+                            </td>
+                            <td data-label="Annually">
+                            <div style="margin-top: -5%;" class="slds-truncate mobileView" title="Net Exp"><lightning-input style = "width: 100px" type="number" value={TotalAnnualvar} disabled="true" step=".01"></lightning-input></div>
+                            </td>
+                            </tr>  
+                            
+                            
+
+                </tbody>
+                </table>  
+                <!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ Table Ends here $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-->
+                <!--/lightning-layout-item>
+                </lightning-layout-->  
+                </div>  
+             <!--Expenditure END here-->
+             <div class="slds-p-top_xx-large"></div>
+             <div class="slds-p-top_xx-large"></div>
+             <div class = "slds-scrollable_x slds-scrollable_y">
+             <table  class="slds-table slds-table_cell-buffer slds-table_bordered slds-scrollable_x slds-table_header-fixed_container tableScroll slds-scrollable_y" aria-label="Example default base table of Opportunities"> 
+               
+               
+                <tbody>
+             <!--Monthly Earnings -->
+            
+             <tr class="slds-hint-parent">
+                <td data-label="Expenditure" class="slds-col slds-size_12-of-12">
+               
+                <lightning-layout multiple-rows >
+                    <lightning-layout-item size="12"
+                            small-device-size="6"
+                            padding="around-small">
+                            <div class="slds-truncate mobileView" style = "width: 120px; padding-right: 0;" title="Monthly Earnings %">Monthly Earnings %</div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12"
+                            small-device-size="6"
+                            padding="around-small">
+                            <div class="slds-truncate mobileView" title="Monthly Earnings %"><lightning-input style = "width: 100px; padding-left: 0;" field-name="HMC_Monthly_Earnings__c" variant="label-hidden" formatter="percent" onchange={handleonchangeMonthlyEarnings} value={MonthlyEarnings} disabled={disableRecord}></lightning-input></div>
+                    </lightning-layout-item>
+                </lightning-layout>
+                </td>
+            
+                <td data-label="Monthly" class="slds-col slds-size_6-of-12">
+                    <div style="margin-top: -5%;" class="slds-truncate mobileView" title="Monthly Earnings %"><lightning-input style = "width: 100px;  padding-left: 0;" type="number" value={MonthlyEarningsVar} disabled="true" step=".01"></lightning-input></div>                    
+                        </td>
+                        <td data-label="Monthly">
+                            </td>
+                            <td data-label="Monthly">
+                            </td>
+               
+            </tr> 
+
+            <!--Net Monthly-->
+            <tr class="slds-hint-parent">
+                <td data-label="Expenditure">
+               
+                <lightning-layout multiple-rows >
+                    <lightning-layout-item size="12"
+                            small-device-size="6"
+                            padding="around-small">
+                            <div class="slds-truncate mobileView slds-hyphenate" style = "width: 120px; padding-right: 0;" title="Net Monthly Earning after deducting Expenditure">Net Monthly Earning after deducting Expenditure</div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12"
+                            small-device-size="6"
+                            padding="around-small">
+                    </lightning-layout-item>
+                </lightning-layout>
+                </td>
+                <!--td data-label="Monthly">
+                    </td-->
+                <td data-label="Monthly">
+                    <div style="margin-top: -5%;" class="slds-truncate mobileView" title=""><lightning-input style = "width: 100px;  padding-left: 0;" type="number" value={NetMonthlyEarningsVar} disabled="true" step=".01"></lightning-input></div>       
+                     </td>
+                     <td data-label="Monthly">
+                    </td>
+                    <td data-label="Monthly">
+                    </td>
+               
+            </tr> 
+                        <!--Net Earnings on Investment-->
+                        <tr class="slds-hint-parent">
+                            <td data-label="Expenditure">
+                           
+                            <lightning-layout multiple-rows >
+                                <lightning-layout-item size="12"
+                                        small-device-size="6"
+                                        padding="around-small">
+                                        <div class="slds-truncate mobileView slds-hyphenate" style = "width: 120px; padding-right: 0;" title="Net Earning on Investment">Net Earning on Investment</div>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="12"
+                                        small-device-size="6"
+                                        padding="around-small">
+                                </lightning-layout-item>
+                            </lightning-layout>
+                            </td>
+                            <!--td data-label="Monthly">
+                                </td-->
+                            <td data-label="Monthly">
+                                <div style="margin-top: -5%;" class="slds-truncate mobileView" title=""><lightning-input style = "width: 100px;  padding-left: 0;" type="number" value={NetMonthlyEarningsOnInvestVar} disabled="true" step=".01"></lightning-input></div>       
+                                 </td>
+                                 <td data-label="Monthly">
+                                </td>
+                                <td data-label="Monthly">
+                                </td>
+                        </tr> 
+                         <!--No of rotations-->
+                         <tr class="slds-hint-parent">
+                            <td data-label="Expenditure">
+                           
+                            <lightning-layout multiple-rows >
+                                <lightning-layout-item size="12"
+                                        small-device-size="6"
+                                        padding="around-small">
+                                        <div class="slds-truncate mobileView" style = "width: 120px; padding-right: 0;" title="No of Rotations">No of Rotations</div>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="12"
+                                        small-device-size="6"
+                                        padding="around-small">
+                                </lightning-layout-item>
+                            </lightning-layout>
+                            </td>
+                            <!--td data-label="Monthly">
+                                </td-->
+                            <td data-label="Monthly">
+                                <div style="margin-top: -5%;" class="slds-truncate mobileView" title="No of Rotations"><lightning-input style = "width: 100px; padding-left: 0;" type="number" value={NoOfRotationsvar} disabled="true" ></lightning-input></div>       
+                                 </td>
+                                 <td data-label="Monthly">
+                                </td>
+                                <td data-label="Monthly">
+                                </td>
+                        </tr> 
+                         <!--ROI-->
+                         <tr class="slds-hint-parent">
+                            <td data-label="Expenditure">
+                            
+                            <lightning-layout multiple-rows class = "slds-scrollable_x slds-scrollable_y">
+                                <lightning-layout-item size="12"
+                                        small-device-size="6"
+                                        padding="around-small">
+                                        <div class="slds-truncate mobileView" style = "width: 120px" title="ROI">ROI</div>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="12"
+                                        small-device-size="6"
+                                        padding="around-small">
+                                </lightning-layout-item>
+                            </lightning-layout>
+                            </td>
+                            <!--td data-label="Monthly">
+                                </td-->
+                            <td data-label="Monthly">
+                                <div style="margin-top: -5%;" class="slds-truncate mobileView" title="ROI"><lightning-input style = "width: 100px; padding-left: 0; " type="number" value={ROIvar} disabled="true" step=".01"></lightning-input></div>       
+                                 </td>
+                                 <td data-label="Monthly">
+                                </td>
+                                <td data-label="Monthly">
+                                </td>
+                        </tr> 
+            </tbody>
+            </table>
+        </div>
+
+         <!--/lightning-record-edit-form-->
+         <div class="slds-clearfix" if:false={disableRecord}>
+           <div>Note : ROI below 42% required NSM approvals</div> 
+            <div class="slds-align_absolute-center">  
+          <lightning-button class="slds-m-top_small slds-p-around_medium"  onclick={handlesaveRecord} label="Save" disabled={SaveCheck}></lightning-button>
+         <!-- <lightning-button class="slds-m-top_small"
+          type="submit" label="cancel" onclick={closeQuickAction} >
+          </lightning-button>-->
+         </div>
+      </div>
+        </div>
+    </lightning-card>
+</template>
