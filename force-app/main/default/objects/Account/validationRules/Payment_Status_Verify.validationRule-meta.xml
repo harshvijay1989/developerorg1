@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Payment_Status_Verify</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND (
+    OR (
+        ISPICKVAL( HMC_Payment_Status__c , &quot;pending&quot; )
+    )
+)</errorConditionFormula>
+    <errorDisplayField>HMC_Payment_Status__c</errorDisplayField>
+    <errorMessage>Please Clear Your Dues Payment</errorMessage>
+</ValidationRule>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Product_Family__c</fullName>
+    <externalId>false</externalId>
+    <label>Product Family</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Communication Devices</fullName>
+                <default>false</default>
+                <label>Communication Devices</label>
+            </value>
+            <value>
+                <fullName>Colourless to yellowish clear liquid.</fullName>
+                <default>false</default>
+                <label>Colourless to yellowish clear liquid.</label>
+            </value>
+            <value>
+                <fullName>Electrical Equipment.</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Electrical Equipment.</label>
+            </value>
+            <value>
+                <fullName>Electrical Fixture</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Electrical Fixture</label>
+            </value>
+            <value>
+                <fullName>Fire Alarm Devices</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Fire Alarm Devices</label>
+            </value>
+            <value>
+                <fullName>Lighting Devices</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Lighting Devices</label>
+            </value>
+            <value>
+                <fullName>Lighting Fixture</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Lighting Fixture</label>
+            </value>
+            <value>
+                <fullName>Nurse Call Devices</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Nurse Call Devices</label>
+            </value>
+            <value>
+                <fullName>Telephone Devices</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Telephone Devices</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

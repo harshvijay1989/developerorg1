@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>Account_Approval_Status_Approved</fullName>
+        <description>Change status field of Account&apos;s record to &apos;Approved&apos; when approved by approver</description>
+        <field>Status__c</field>
+        <literalValue>Approved</literalValue>
+        <name>Account - Approval - Status - Approved</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Account_Approval_Status_InProgress</fullName>
+        <description>Change status field of account&apos;s record to &apos;in progress&apos; while in approval process</description>
+        <field>Status__c</field>
+        <literalValue>Approval In-Progress</literalValue>
+        <name>Account - Approval - Status - InProgress</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Account_Approval_Status_Recalled</fullName>
+        <description>Change status field of Account&apos;s record to &apos;None&apos; when approved by approver</description>
+        <field>Status__c</field>
+        <name>Account - Approval - Status - Recalled</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Account_Approval_Status_Rejected</fullName>
+        <description>Change status field of Account&apos;s record to &apos;rejected&apos; when rejected by approver</description>
+        <field>Status__c</field>
+        <literalValue>Rejected</literalValue>
+        <name>Account - Approval - Status - Rejected</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Assign_to_ASM</fullName>
+        <field>OwnerId</field>
+        <lookupValue>harsh.vijay02-vnt1@force.com</lookupValue>
+        <lookupValueType>User</lookupValueType>
+        <name>Assign to ASM</name>
+        <notifyAssignee>true</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Distance_Verify</fullName>
+        <field>Distance_Policy_Approval_Required__c</field>
+        <literalValue>0</literalValue>
+        <name>Distance Verify</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Distance_Verify2</fullName>
+        <field>Distance_Policy_Approval_Status__c</field>
+        <literalValue>Approved</literalValue>
+        <name>Distance Verify</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Path_update</fullName>
+        <field>Path_Status__c</field>
+        <literalValue>Qualified</literalValue>
+        <name>Path update</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Reject</fullName>
+        <field>Status__c</field>
+        <literalValue>Rejected</literalValue>
+        <name>Reject</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Status_Approved</fullName>
+        <field>Status__c</field>
+        <literalValue>Approved</literalValue>
+        <name>Status Approved</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+</Workflow>

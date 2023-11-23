@@ -1,0 +1,145 @@
+<template>
+    <div class="slds-page-header">
+        <div class="slds-page-header__row">
+            <div class="slds-page-header__col-title">
+                <div class="slds-media">
+                    <div class="slds-media__figure">
+                        <span class="slds-icon_container slds-icon-standard-opportunity">
+                            <svg class="slds-icon slds-page-header__icon" aria-hidden="true">
+                                <use xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#opportunity"></use>
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="slds-media__body">
+                        <div class="slds-page-header__name">
+                            <div class="slds-page-header__name-title">
+                                <h1>
+                                    <span>{objectvaluefilter}</span>
+                                    <span class="slds-page-header__title slds-truncate" title="Recently Viewed">Recently
+                                        Viewed</span>
+                                </h1>
+                            </div>
+                            <div class="slds-page-header__name-switcher">
+                                <div class="slds-dropdown-trigger slds-dropdown-trigger_click">
+                                    <button class="slds-button slds-button_icon slds-button_icon-small"
+                                        aria-haspopup="true" title="Switch list view">
+                                        <svg class="slds-button__icon slds-icon_x-small" aria-hidden="true">
+                                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+                                        </svg>
+                                        <span class="slds-assistive-text">Switch list view</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-page-header__col-actions">
+                <div class="slds-page-header__controls">
+                    <div class="slds-page-header__control">
+                        <ul class="slds-button-group-list">
+                            <li>
+                                <button class="slds-button slds-button_neutral">New</button>
+                            </li>
+                            <li>
+                                <div class="slds-dropdown-trigger slds-dropdown-trigger_click">
+                                    <button class="slds-button slds-button_icon slds-button_icon-border-filled"
+                                        aria-haspopup="true" title="More Actions">
+                                        <svg class="slds-button__icon" aria-hidden="true">
+                                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+                                        </svg>
+                                        <span class="slds-assistive-text">More Actions</span>
+                                    </button>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slds-page-header__row">
+            <div class="slds-page-header__col-meta">
+                <p class="slds-page-header__meta-text">10 items • Updated 13 minutes ago</p>
+            </div>
+            <div class="slds-page-header__col-controls">
+                <div class="slds-page-header__controls">
+                    <div class="slds-page-header__control">
+                        <div class="slds-dropdown-trigger slds-dropdown-trigger_click">
+                            <button class="slds-button slds-button_icon slds-button_icon-more" aria-haspopup="true"
+                                aria-expanded="false" title="List View Controls">
+                                <svg class="slds-button__icon" aria-hidden="true">
+                                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#settings"></use>
+                                </svg>
+                                <svg class="slds-button__icon slds-button__icon_x-small" aria-hidden="true">
+                                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+                                </svg>
+                                <span class="slds-assistive-text">List View Controls</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="slds-page-header__control">
+                        <div class="slds-dropdown-trigger slds-dropdown-trigger_click">
+                            <button class="slds-button slds-button_icon slds-button_icon-more" aria-haspopup="true"
+                                aria-expanded="false" title="Change view">
+                                <svg class="slds-button__icon" aria-hidden="true">
+                                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#table"></use>
+                                </svg>
+                                <svg class="slds-button__icon slds-button__icon_x-small" aria-hidden="true">
+                                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+                                </svg>
+                                <span class="slds-assistive-text">Change view</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="slds-page-header__control">
+                        <button class="slds-button slds-button_icon slds-button_icon-border-filled" title="Edit List">
+                            <svg class="slds-button__icon" aria-hidden="true">
+                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#edit"></use>
+                            </svg>
+                            <span class="slds-assistive-text">Edit List</span>
+                        </button>
+                    </div>
+                    <div class="slds-page-header__control">
+                        <button class="slds-button slds-button_icon slds-button_icon-border-filled"
+                            title="Refresh List">
+                            <svg class="slds-button__icon" aria-hidden="true">
+                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#refresh"></use>
+                            </svg>
+                            <span class="slds-assistive-text">Refresh List</span>
+                        </button>
+                    </div>
+                    <div class="slds-page-header__control">
+                        <ul class="slds-button-group-list">
+                            <li>
+                                <button class="slds-button slds-button_icon slds-button_icon-border-filled"
+                                    title="Charts">
+                                    <svg class="slds-button__icon" aria-hidden="true">
+                                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chart"></use>
+                                    </svg>
+                                    <span class="slds-assistive-text">Charts</span>
+                                </button>
+                            </li>
+                            <li>
+                                <button class="slds-button slds-button_icon slds-button_icon-border-filled"
+                                    title="Filters">
+                                    <svg class="slds-button__icon" aria-hidden="true">
+                                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#filterList"></use>
+                                    </svg>
+                                    <span class="slds-assistive-text">Filters</span>
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <lightning-card>
+        <lightning-datatable key-field="id" data={data} columns={columns}>
+        </lightning-datatable>
+    </lightning-card> -->
+    <template if:true={isDataLoaded}>
+    <!-- <c-list-view-data-table recordvaluetodatatable = {recordData} columnsvaluetodatatable = {columns}></c-list-view-data-table> -->
+    <c-list-view-data-table></c-list-view-data-table>
+    </template>
+</template>

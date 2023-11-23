@@ -1,0 +1,33 @@
+<template>
+	<template if:false={calculateDistancee}>
+        <br/>
+         <br/>
+		<center> Are you sure you want to calculate the distance? </center>
+		<!--<div if:true={isLoading} class="slds-is-relative">
+			<lightning-spinner alternative-text="Loading..." variant="brand">
+			</lightning-spinner>
+		</div>-->
+         <br/>
+          <br/>
+		<center>
+			<lightning-button variant="neutral" label="Close" onclick={handleCancel}></lightning-button>&nbsp;
+			<lightning-button variant="brand" label="Yes" onclick={handleYesClick}></lightning-button>
+		</center>
+         <br/>
+          <br/>
+	</template>
+	<template if:true={calculateDistancee}>
+         <br/>
+          <br/>
+		<center>  Distance is already calculated. </center>
+         <br/>
+          <br/>
+		<!--<div if:true={isLoading} class="slds-is-relative">
+			<lightning-spinner alternative-text="Loading..." variant="brand">
+			</lightning-spinner>
+		</div>-->
+		<lightning-button variant="neutral" label="Cancel" onclick={handleCancel}></lightning-button>
+         <br/>
+          <br/>
+	</template>
+</template>

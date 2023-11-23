@@ -1,0 +1,19 @@
+<aura:component implements="force:lightningQuickActionWithoutHeader,force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    <aura:attribute name="recordId" type="String" />
+     <aura:html tag="style">
+        .slds-modal__content{padding: 0;height:auto!important;max-height:unset!important;}
+        .cuf-content{padding: 0!important;}
+        
+        @media (min-width: 48em){
+        .slds-modal__container {
+        margin: 0 auto;
+        width: 100%;
+        max-width: 75rem;
+        min-width: 75rem;
+        }
+        }
+    </aura:html>
+    
+   
+    <c:calculateDistanceConfirmation recordId="{!v.recordId}"></c:calculateDistanceConfirmation>
+</aura:component>

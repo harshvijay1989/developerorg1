@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>HMC_Stage__c</fullName>
+    <externalId>false</externalId>
+    <label>Stage</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Onboarding Initiation</fullName>
+                <default>false</default>
+                <label>Onboarding Initiation</label>
+            </value>
+            <value>
+                <fullName>Policy and Thank you Email</fullName>
+                <default>false</default>
+                <label>Policy and Thank you Email</label>
+            </value>
+            <value>
+                <fullName>ROI and legal Scrutiny</fullName>
+                <default>false</default>
+                <label>ROI and legal Scrutiny</label>
+            </value>
+            <value>
+                <fullName>RSM Recommendation</fullName>
+                <default>false</default>
+                <label>RSM Recommendation</label>
+            </value>
+            <value>
+                <fullName>Sales Head Approval</fullName>
+                <default>false</default>
+                <label>Sales Head Approved</label>
+            </value>
+            <value>
+                <fullName>Document Verification</fullName>
+                <default>false</default>
+                <label>Document Verification</label>
+            </value>
+            <value>
+                <fullName>Closed Dropped</fullName>
+                <default>false</default>
+                <label>Closed Dropped</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

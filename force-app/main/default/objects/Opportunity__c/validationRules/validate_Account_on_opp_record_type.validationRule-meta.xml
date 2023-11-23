@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>validate_Account_on_opp_record_type</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+     RecordType.Name  = &apos;Opportunity&apos;,
+    ISBLANK(Account_Name__c)
+)</errorConditionFormula>
+    <errorDisplayField>Account_Name__c</errorDisplayField>
+    <errorMessage>Enter Account Name</errorMessage>
+</ValidationRule>

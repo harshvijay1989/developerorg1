@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Email_Leads</fullName>
+    <columns>NAME</columns>
+    <columns>Company__c</columns>
+    <columns>Email__c</columns>
+    <columns>Phone__c</columns>
+    <columns>Address__City__s</columns>
+    <columns>LeadSource__c</columns>
+    <columns>Status__c</columns>
+    <columns>CREATEDBY_USER</columns>
+    <columns>CREATED_DATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>LeadSource__c</field>
+        <operation>equals</operation>
+        <value>Email</value>
+    </filters>
+    <label>Email Leads</label>
+</ListView>

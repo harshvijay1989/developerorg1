@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>HMC_Not_Editable_Shipping_Billing</fullName>
+    <active>false</active>
+    <errorConditionFormula>AND(NOT( ISNEW()  ),
+    OR(ISCHANGED(  BillingAddress ),
+       ISCHANGED(  BillingCity ),
+       ISCHANGED(  BillingCountry ),
+       ISCHANGED(  BillingGeocodeAccuracy ),
+       ISCHANGED(  BillingLatitude ),
+       ISCHANGED(  BillingLongitude ),
+       ISCHANGED(  BillingState ),
+       ISCHANGED(  BillingPostalCode),
+       ISCHANGED(  BillingStreet ),
+       ISCHANGED(  ShippingStreet),
+       ISCHANGED(  ShippingCity),
+       ISCHANGED(  ShippingState),
+       ISCHANGED(  ShippingPostalCode),
+       ISCHANGED(  ShippingCountry),
+       ISCHANGED(  ShippingLatitude),
+       ISCHANGED(  ShippingLongitude),
+       ISCHANGED(  ShippingGeocodeAccuracy),
+       ISCHANGED(  ShippingAddress )
+       )
+)</errorConditionFormula>
+    <errorMessage>You can not change billing &amp; shipping address.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,153 @@
+<template>
+	<!-- <div if:true={isLoading}>
+		<lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+	</div> -->
+	<ul class="slds-accordion">
+		 <li class="slds-accordion__list-item" onclick={handleOpenAccordian}>
+			<section class="slds-accordion__section slds-is-open">
+				<div class="slds-accordion__summary">
+					<h2 class="slds-accordion__summary-heading">
+						<button class="slds-button slds-button_reset slds-accordion__summary-action" onclick={handleOpenAccordian} aria-controls="referenceId-42" aria-expanded="true" title="Accordion summary">
+                        <svg class="slds-accordion__summary-action-icon slds-button__icon slds-button__icon_left" aria-hidden="true">
+              					<use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg#check"></use>
+            			</svg>
+						<span class="slds-accordion__summary-content">Picture of the shop</span>
+                  </button>
+					</h2>
+				</div>
+				<div class="slds-accordion__content" id="referenceId-42">
+					<div class="slds-scrollable_x">
+						<lightning-layout>
+							<lightning-layout-item flexibility="auto" padding="around-small">
+								<template if:true={isLoading}>
+									<lightning-spinner alternative-text="Loading" size="small" variant="brand">
+									</lightning-spinner>
+								</template>
+								<lightning-button if:true={showsync} variant="brand" title="Content Sync"
+									icon-name="utility:sync" onclick={handleSync} slot="actions">
+								</lightning-button>
+									<!-- <div class="slds-grid slds-wrap">
+										<div class="slds-col slds-size_1-of-4" if:true={showFilters}>
+											<lightning-input if:true={showFilters} type="search" variant="standard"
+												name="Title" label="Title" onchange={handleSearch}>
+											</lightning-input>
+										</div>
+										<div class="slds-col slds-size_1-of-4" if:true={showFilters}>
+											<lightning-input if:true={showFilters} type="search" variant="standard"
+												name="Created By" label="Created By" onchange={handleSearch}>\
+											</lightning-input>
+										</div>
+										 <div class="slds-col slds-size_2-of-4 slds-var-p-left_small">
+											<lightning-file-upload if:true={showFileUpload} label="Upload New File"
+												name="fileUploader" accept={accept} record-id={recordId}
+												onuploadfinished={handleUploadFinished} multiple>
+											</lightning-file-upload>
+										</div> 
+									</div> -->
+
+								<!-- <div class="slds-var-p-around_small" style="margin-top:10px;">
+									<lightning-datatable key-field="id" data={sampleData} hide-checkbox-column
+										columns={columnsList} onrowaction={handleRowAction}>
+									</lightning-datatable>
+								</div> -->
+
+							</lightning-layout-item>
+						</lightning-layout>
+					</div>
+					<div class="slds-scrollable_x">
+						<lightning-layout>
+							<lightning-layout-item flexibility="auto" padding="around-small">
+								<table class="slds-table slds-table_bordered slds-table_cell-buffer" style="margin-top:10px;">
+									<thead>
+										<tr>
+											<th>Document Name</th>
+										</tr>
+									</thead>
+									<tbody>
+										<template for:each={pictureOfTheShopdata} for:item="item">
+											<tr key={item.label} style="height:10px;">
+												<td>{item.label}</td>
+												<td>
+													<div class="customFileUploadCls customFileUploadMargin">
+														<lightning-file-upload label="" name="fileUploader"
+															accept={acceptedFormats} record-id={recordId}
+															onclick={handlePosFileUpload} data-label={item.label}
+															onuploadfinished={handleUploadFinished}
+															multiple disabled={fileUploadDisable}>
+														</lightning-file-upload>
+													</div>
+
+												</td>
+											</tr>
+										</template>
+									</tbody>
+								</table>
+							</lightning-layout-item>
+						</lightning-layout>
+					</div>
+				</div>
+			</section>
+		</li> 
+
+		<li class="slds-accordion__list-item" onclick={handleOpenAccordian} style="margin-top:10px;">
+			<section class="slds-accordion__section slds-is-open">
+				<div class="slds-accordion__summary">
+					<h2 class="slds-accordion__summary-heading">
+						<button class="slds-button slds-button_reset slds-accordion__summary-action" onclick={handleOpenAccordian} aria-controls="referenceId-43" aria-expanded="false" title="Accordion summary">
+                     <svg class="slds-accordion__summary-action-icon slds-button__icon slds-button__icon_left" aria-hidden="true">
+                        <!-- <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#switch"></use> -->
+						<use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg#check"></use>
+                     </svg>
+                     <span class="slds-accordion__summary-content">KYC Documents</span>
+                  </button>
+					</h2>
+				</div>
+				<div class="slds-accordion__content" id="referenceId-43">
+
+					<div class="slds-m-top_medium">
+						<div class="slds-grid slds-wrap">
+							<div class="slds-col slds-m-left_small">
+								<lightning-combobox name="document" label="Documents" value={documentType}
+									placeholder="None" options={documentOptions} onchange={handleChange} required>
+								</lightning-combobox>
+							</div>
+							<div class="slds-col slds-m-left_small">
+								<template if:true={showFileUpload}>
+									<div class="customFileUploadCls custoMarginTop1" style="margin-left: 12px;">
+										<lightning-file-upload label="" name="fileUploader" accept={acceptedFormats}
+											record-id={recordId} onchange={saveFile}
+											onuploadfinished={handleUploadFinished} multiple
+											disabled={fileUploadDisable}>
+										</lightning-file-upload>
+									</div>
+								</template>
+							</div>
+						</div>
+					</div>
+
+
+					<!-- <div class="slds-scrollable_x slds-scrollable_y slds-m-top_medium slds-m-bottom_medium"> -->
+
+					<div class="slds-grid slds-scrollable_x slds-scrollable_y" style="margin-top: 10px;margin-bottom:10px;">
+							<lightning-datatable key-field="id" data={dataList} hide-checkbox-column
+								columns={columnsList} onrowaction={handleRowAction} class="slds-m-top_small">
+							</lightning-datatable>
+					</div>
+					<!-- <lightning-layout>
+								<lightning-layout-item flexibility="auto">
+									<lightning-datatable key-field="id" data={dataList} hide-checkbox-column
+										columns={columnsList} onrowaction={handleRowAction} class="slds-m-top_small">
+									</lightning-datatable>
+								</lightning-layout-item>
+							</lightning-layout> -->
+				<!-- <template if:false={HasNodata}> 
+							<div class="slds-m-vertical_x-small slds-align_absolute-center">
+								<strong>No Records Found</strong></div>
+						</template> -->
+
+
+				</div>
+			</section>
+		</li>
+	</ul>
+</template>

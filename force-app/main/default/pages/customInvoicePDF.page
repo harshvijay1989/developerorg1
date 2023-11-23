@@ -1,0 +1,113 @@
+<apex:page renderAs="pdf" controller="InvoiceController" showQuickActionVfHeader="false" >
+    <html>
+      
+        
+        <body style="font-family: Consolas;">
+            <p style="font-size:30px; text-align:center;">{!orgInfo.Name}</p>  
+            <p style="background: rgb(222, 229, 236);font-size:20px; padding: 10px;text-align:center;">Invoice</p>  
+            <table style="width: 100%;">
+                
+                <tr>
+                    <td align="left" rowspan="3">Company name</td>
+                    <td align="left" rowspan="3">{!ord.AccountId__r.Name}</td>
+                    <td style="visibility: hidden;"></td>
+                    <td align="left">Create Date</td>
+                    <td>
+                        <apex:outputText value="{0, date, dd/MM/yyyy}">
+                            <apex:param value="{!ord.CreatedDate}" />
+                        </apex:outputText>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="visibility: hidden;"></td> 
+                    <td align="left">Order Number</td>
+                    <td>{!ord.OrderNumber__c}</td>
+                </tr>
+                <tr style="visibility: hidden;">
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr style="visibility: hidden;">
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr style="visibility: hidden;">
+                    <td></td>
+                    <td></td>
+                </tr>
+                
+                <tr>
+                    <td align="left" style="top: 20px">Prepared By</td>
+                    <td align="left">{!orgInfo.Name}</td>
+                    <td style="visibility: hidden;"></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td align="left">Email</td>
+                    <td align="left">{!us.Email}</td>
+                    <td style="visibility: hidden;"></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <!-- Other hidden rows can be added here if needed -->
+                <tr>
+                    <td align="left">Bill To Name</td>
+                    <td align="left">{!ord.AccountId__r.Name}</td>
+                    <td style="visibility: hidden;"></td>
+                    <td align="left">Ship to Name</td>
+                    <td align="left">{!ord.AccountId__r.Name}</td>
+                    
+                </tr>
+                <tr>
+                    <td align="left" style="vertical-align: text-top; width: 150px;">Bill To</td>
+                    <td align="left">{!ord.BillingAddress__Street__s}<br/>{!ord.BillingAddress__City__s},{!ord.BillingAddress__PostalCode__s}<br/><!--{!ord.BillingAddress__StateCode__s}, {!ord.BillingAddress__CountryCode__s}--><br/></td>
+                    <td style="visibility: hidden;"></td>
+                    <td align="left" style="vertical-align: text-top;">Ship To</td>
+                    <td align="left">{!ord.ShippingAddress__Street__s} <br/>{!ord.ShippingAddress__City__s}, {!ord.ShippingAddress__PostalCode__s}<br/><!--{!ord.ShippingAddress__StateCode__s},{!ord.ShippingAddress__CountryCode__s}--></td>
+                </tr>
+            </table>
+            <br/>
+            <table border='1' cellpadding="10" style="width: 100%; border-collapse: collapse;" cellspacing="0">
+                <tr style="background: rgb(108, 107, 107); color: #fff; border-color: rgb(108, 107, 107); border-collapse: collapse;">
+                    <td style="border-left: none; border-style: hidden;">Product</td>
+                    <td style="border-style: hidden">Date</td>
+                    <td style="border-style: hidden">List Price</td>
+                    <td style="border-style: hidden">Sales Price</td>
+                    <td style="border-style: hidden">Quantity</td>
+                    <td style="border-style: hidden">Total Price</td>
+                </tr>
+                <apex:variable var="rowNum" value="{!0}" />
+                <apex:repeat value="{!orderitem}" var="prodobj">
+                    <apex:variable var="rowNum" value="{!rowNum + 1}" />
+                    <tr style="{!IF(MOD(rowNum, 2) == 0, 'background: LightGray;', 'background: rgb(240, 239, 239);')}">
+                        <td style="border-left: none; border-bottom: none">{!prodobj.Product2Id__r.Name}</td>
+                        <td style="border-bottom: none">     
+                            <apex:outputText value="{0, date, dd/MM/yyyy}">
+                                <apex:param value="{!prodobj.CreatedDate}" />
+                            </apex:outputText>
+                        </td>
+                        <td align="right" style="border-bottom: none">{!prodobj.ListPrice__c}</td>
+                        <td align="right" style="border-bottom: none">{!prodobj.UnitPrice__c}</td>
+                        <td style="border-bottom: none">{!prodobj.Quantity__c}</td>  
+                        <td align="right" style="border-right: none; border-bottom: none">{!prodobj.TotalPrice__c}</td>
+                    </tr>
+                </apex:repeat>
+            </table>
+            <hr/>
+            <div>
+                <table style="background: rgb(222, 229, 236); width:100%"  >
+                    <tr >
+                        <th>Product Total Price</th>
+                        <th   style="text-align:right;">{!prodcutTotalAmt}</th>
+                    </tr>
+                </table>
+            </div>
+            
+            <div  style="text-align:center">
+                <p style="background: rgb(222, 229, 236); padding: 10px;text-align:center;">Thank You for placing Order. After applying the discount your total payable amount is  <b>{!ord.TotalAmount__c}</b></p>  
+                
+            </div>
+        </body>
+    </html>
+</apex:page>

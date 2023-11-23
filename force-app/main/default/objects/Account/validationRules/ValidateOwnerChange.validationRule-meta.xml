@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ValidateOwnerChange</fullName>
+    <active>false</active>
+    <description>Change Owner is available only for NSM</description>
+    <errorConditionFormula>$User.ProfileId  &lt;&gt; &quot;00eC30000000843&quot; &amp;&amp; ISCHANGED( OwnerId )</errorConditionFormula>
+    <errorDisplayField>OwnerId</errorDisplayField>
+    <errorMessage>You don&apos;t have the access to change the Owner</errorMessage>
+</ValidationRule>

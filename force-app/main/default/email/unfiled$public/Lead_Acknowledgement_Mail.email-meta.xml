@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Lead Acknowledgement Mail</name>
+    <style>none</style>
+    <subject>Lead Acknowledgement Mail</subject>
+    <textOnly>Thank you for your interest in CRM  LANDING  We will be contacting you shortly.  Sincerely,
+
+
+Thanks &amp; regards
+Name : Gaurav Ahir
+Mob : 9950424927</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

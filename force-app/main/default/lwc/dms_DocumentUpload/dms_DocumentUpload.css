@@ -1,0 +1,24 @@
+body{
+  height: auto;
+}
+.cusomm-icon-color1{
+    --lwc-colorTextIconDefault: #f5fff8;
+}
+
+
+ 
+
+/*
+.THIS .slds-file-selector__dropzone{
+	border: none;
+  }
+
+.THIS  .slds-form-element__control {
+  margin-top: -20px;
+}
+
+.THIS .slds-file-selector__button {
+  color: white;
+  background-color: #0176D3;
+}
+*/

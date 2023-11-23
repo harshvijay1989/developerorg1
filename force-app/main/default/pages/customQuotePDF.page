@@ -1,0 +1,160 @@
+<apex:page renderAs="pdf" controller="customQuoteController" showQuickActionVfHeader="false">
+    <apex:form >
+        <html>
+            
+            <body style="font-family:Consolas;">
+                <table style=" width:100%; ">
+                    <tr>
+                        <td align="left"><h2>{!orgInfo.Name}</h2></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td align="left" rowspan="3">Company name</td>
+                        <td align="left" rowspan="3">{!Quote.Account_Name__r.Name}</td>
+                        <td style=" visibility: hidden;"></td>
+                        <td align="left">Create Date</td>
+                        <td><apex:outputText value="{0, date, dd/MM/yyyy}">
+                            <apex:param value="{!Quote.CreatedDate}" />
+                            </apex:outputText></td>
+                    </tr>
+                    <tr>
+                        <td style=" visibility: hidden;"></td> 
+                        <td align="left">Quote Number </td>
+                        <td>{!Quote.QuoteNumber__c}</td>
+                    </tr>
+                    <tr style="visibility: hidden;">
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr style="visibility: hidden;">
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr style="visibility: hidden;">
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td align="left" style="top:20px">Prepard By</td>
+                        <td align="left">{!orgInfo.Name}</td>
+                        <td style=" visibility: hidden;"></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td align="left">Email</td>
+                        <td align="left">{!us.Email}</td>
+                        <td style=" visibility: hidden;"></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr style="visibility: hidden;">
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr style="visibility: hidden;">
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td align="left" >Bill To Name</td>
+                        <td align="left">{!Quote.Bill_To_Name__c}</td>
+                        <td style=" visibility: hidden;"></td>
+                        <td align="left">Ship to Name</td>
+                        <td align="left">{!Quote.Bill_To_Name__c}</td>
+                    </tr>
+                    <tr>
+                        <td align="left" style="vertical-align: text-top; widtd: 150px;">Bill To</td>
+                        <td align="left" >{!Quote.Bill_To__Street__s}<br/>{!Quote.Bill_To__City__s},{!Quote.Bill_To__PostalCode__s} <br/><!--{!Quote.Bill_To__StateCode__s},
+{!Quote.Bill_To__CountryCode__s}<br/>--></td>
+                        <td style=" visibility: hidden;"></td>
+                        <td align="left" style="vertical-align: text-top;">Ship To</td>
+                        <td align="left">{!Quote.ShippingAddress__Street__s} <br/>{!Quote.ShippingAddress__City__s}, {!Quote.ShippingAddress__PostalCode__s}<br/><!--{!Quote.ShippingAddress__StateCode__s},{!Quote.ShippingAddress__CountryCode__s}--></td>
+                    </tr>
+                </table>
+                <br/>
+                <table  border='1' cellpadding="10"  style="width: 100%; border-collapse:collapse;"  cellspacing="0">
+                    <tr style="background:rgb(108 , 107, 107); color:#fff;border-color:rgb(108,107,107); border-collapse:collapse; " >
+                        <td style="border-left:none; border-style:hidden">Product</td>
+                        <td style="border-style:hidden">Date</td>
+                        <td style="border-style:hidden">List Price</td>
+                        <td style="border-style:hidden">Sales Price</td>
+                        <td style="border-style:hidden">Quantity</td>
+                        <td style="border-style:hidden">Total Price</td>
+                    </tr>
+                    <apex:variable var="rowNum" value="{!0}" />
+                    <apex:repeat value="{!quoteLineItem}" var="prodobj">
+                        <apex:variable var="rowNum" value="{!rowNum + 1}" />
+                        <tr style="{!IF(MOD(rowNum, 2) == 0, 'background: LightGray;', 'background: rgb(240, 239, 239);')}">
+                            <td style="border-left:none;border-bottom:none">{!prodobj.Product__r.Name}</td>
+                            <td style="border-bottom:none">     
+                                <apex:outputText value="{0, date, dd/MM/yyyy}">
+                                    <apex:param value="{!prodobj.CreatedDate}" />
+                                </apex:outputText>
+                            </td>
+                            <td align="right" style="border-bottom:none">{!prodobj.ListPrice__c}</td>
+                            <td align="right" style="border-bottom:none">{!prodobj.UnitPrice__c}</td>
+                            <td style="border-bottom:none">{!prodobj.Quantity__c}</td>  
+                            <td align="right" style="border-right:none;border-bottom:none">{!prodobj.TotalPrice__c}</td>
+                        </tr>
+                    </apex:repeat>
+                </table>
+                <hr/>
+                <div style="margin-top:20px ;margin-left:50%">
+                    <table cellpading="8">
+                        <tr>
+                            <td align="left">Sub Total</td>
+                            <td style="visibility: hidden; width:20px"></td>
+                            <td>{!Quote.Subtotal__c}</td>
+                        </tr>
+                        <tr>
+                            <td align="left">Discount</td>
+                            <td style="visibility: hidden; width:20px"></td>
+                            <td>{!Quote.Discount__c}%</td>
+                        </tr>
+                        <tr>
+                            <td align="left">Total Price</td>
+                            <td style="visibility: hidden; width:20px"></td>
+                            <td>{!Quote.Total_Price__c}</td>
+                        </tr>
+                        <tr>
+                            <td align="left">Shipping Charge</td>
+                            <td style="visibility: hidden; width:20px"></td>
+                            <td>{!Quote.ShippingHandling__c}</td>
+                        </tr>
+                        <tr>
+                            <td align="left">Grand Total</td>
+                            <td style="visibility: hidden; width:20px"></td>
+                            <td>{!Quote.GrandTotal__c}</td>
+                        </tr>
+                    </table>
+                </div>
+                <div >
+                    <br/>
+                    <p style="background: rgb(222,229,236);padding:10px">Quote Acceptance Information</p>    
+                    <table cellpading="5">
+                        <tr>
+                            <td align="left">Name</td>          
+                            <td >{!Quote.Name}</td>
+                        </tr>
+                        <tr>
+                            <td align="left">Date</td>
+                            <td><apex:outputText value="{0, date, dd/MM/yyyy}">
+                                <apex:param value="{!Quote.CreatedDate}" />
+                                </apex:outputText></td>
+                        </tr>
+                        <tr>
+                            <td align="left">Title</td>
+                            <td style="color:rgb(159,160,161)">______________________________</td>
+                        </tr>
+                        <tr>
+                            <td align="left">Signature</td>
+                            <td style="color:rgb(159,160,161)">_______________________________</td>
+                        </tr>
+                    </table>
+                </div>  
+            </body>
+        </html>
+    </apex:form>
+</apex:page>

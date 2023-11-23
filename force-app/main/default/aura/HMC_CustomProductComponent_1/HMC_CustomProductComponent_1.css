@@ -1,0 +1,58 @@
+.THIS .custom-modal-content{
+    max-height: calc(100vh - 255px);
+    overflow: auto;
+}
+.THIS .slds-form-element__label{
+    display: none;
+}
+.THIS .custom-lookup .DemoNaCustomLookup{
+    margin: 0;
+}
+.THIS .custom-lookup .slds-lookup__search-input{
+    min-height: 32px;
+    padding-right: 28px;
+}
+.THIS .custom-lookup .slds-icon-utility-search{
+    position: absolute;
+    top: 8px;
+    right: 8px;
+}
+.THIS .custom-lookup .slds-pill{
+    width: 100%;
+    padding: 5px 12px;
+    height: 32px;
+}
+.THIS .custom-image-card .forceContentFileCard{
+    width: 150px!important;
+}
+
+.THIS.red {
+    background-color: red;
+}
+
+.THIS.slds-box {
+    border: 4px solid blue;
+}
+@media(min-width: 1350px)
+    {
+    .THIS.button-menu-mobile
+    {
+        display:none;
+    }
+}
+
+/*@media (min-width: 1350px){
+       .THIS .mrp{
+        width : 102px;
+        }
+        }
+@media (max-width: 600px){
+       .THIS .mrp{
+        width : 64px;
+        }
+        }*/
+
+/*.THIS svg:not(:root) {
+overflow: hidden;
+fill: red;
+}*/

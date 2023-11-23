@@ -1,0 +1,258 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickActionWithoutHeader" access="global"  controller="LeadConvertController" >
+    <ltng:require styles="{!$Resource.ModalWidthCSS}"/>
+    <aura:renderIf isTrue="{!not(v.CallLwc)}">
+        <header class="sticky-header">
+            	Convert Lead
+    	</header>
+    </aura:renderIf>
+        
+    <br/>
+    <aura:attribute name="validateLead" type="Boolean" default="false"/> 
+    <aura:attribute name="activeSections" type="List" default="['account','contact', 'opportunity', 'User']" />
+    <!--   Account Obj -->
+    <aura:attribute name="accountToSave" type="Account" default="{'sObject':'Account',
+                                                                 'Name':'',
+                                                                 'Phone':'',
+                                                                 'Owner.Name':'',
+                                                                 'RecordType.Name':'',
+                                                                 }"/>
+    <aura:attribute name="ContactToSave" type="Contact" default="{'sObject':'Contact',
+                                                                 'FirstName':'',
+                                                                 'LastName':'',
+                                                                 'MobilePhone':''
+                                                                 }"/>
+    
+    <aura:attribute name="OppToSave" type="Opportunity" default="{'sObject':'Opportunity__c',
+                                                                 'Name':'',
+                                                                 }"/>
+    <aura:attribute name="UserToSave" type="User" default="{'sObject':'User',
+                                                           'Name':'',
+                                                           'Id':'',
+                                                           }"/>
+    <!--   Account Obj -->
+    <aura:attribute name="accGetID" type="String"/> 
+    <aura:attribute name="conId" type="String"/> 
+    <aura:attribute name="oppId" type="String"/> 
+<aura:attribute name="accId" type="String"/>     
+    <aura:attribute name="isModalOpen" type="boolean" default="false"/>
+    <aura:attribute access="public" type="List" name="accountValue" default="[]"/>
+    <aura:attribute access="public" type="List" name="UserValue" default="[]"/>
+    <aura:attribute access="public" type="List" name="contactValue" default="[]"/>
+    <aura:attribute access="public" type="List" name="opportunityValue" default="[]"/>
+    <aura:attribute name="checkBox" type="Boolean" default="true"/>
+    <aura:attribute name="CallLwc" type="Boolean" default="false"/>
+    <aura:attribute name="auraClose" type="Boolean" default="true"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="artId" type="String" default="{!v.recordId}" access="global" />  
+    <aura:attribute name="leadObj" type="Lead"/>
+    <aura:attribute name="oppName" type="string"/>
+    <aura:attribute name="userName" type="string"/>
+    <aura:attribute name="isAccNew" type="Boolean" default="true"/>
+    <aura:attribute name="isConNew" type="Boolean" default="true"/>
+    <aura:attribute name="isOppNew" type="Boolean" default="true"/>
+    <aura:attribute name="isAccOld" type="Boolean" default="false"/>
+    <aura:attribute name="isConOld" type="Boolean" default="false"/>
+    <aura:attribute name="isOppOld" type="Boolean" default="false"/>
+    <aura:attribute name="isLoding" type="Boolean" default="false"/>
+    <aura:attribute name="isCreateOpp" type="Boolean" default="false"/>
+    <aura:attribute name="isOppRadio" type="Boolean" default="true"/>
+    <aura:attribute name="isOppCheckboxActive" type="Boolean" default="false"/>
+    
+    <aura:attribute name="options" type="List" default="['B2B','B2C']"/>
+    <aura:attribute name="ltngSelectedvalue" type="string" default="B2B"/>
+    
+    <aura:attribute name="ContactSalutationOptions" type="List" default="[
+                                                                         {'label': 'None', 'value': 'None'},
+                                                                         {'label': 'Mr.', 'value': 'Mr'},
+                                                                         {'label': 'Ms.', 'value': 'Ms'},
+                                                                         {'label': 'Mr.', 'value': 'Mr'},
+                                                                         {'label': 'Mrs.', 'value': 'Mrs'},
+                                                                         {'label': 'Dr.', 'value': 'Dr'},
+                                                                         {'label': 'Prof.', 'value': 'Prof'},       
+                                                                         ]"/>
+    <aura:attribute name="LeadConvertOptions" type="List" />
+    <aura:if isTrue="{!v.isLoding}">
+        <div class="exampleHolder">
+            <lightning:spinner alternativeText="Loading" size="small" />
+        </div>
+    </aura:if>
+    
+    <!--Use aura:if tag to display/hide popup based on isModalOpen value-->  
+    <aura:if isTrue="{!v.auraClose}">
+        <div class="slds-p-around_medium1 " style="height:100vh;">
+            
+            
+            
+            <!-- Modal/Popup Box starts here-->
+            
+            
+            <div class="main bg-white">
+                <lightning:accordion allowMultipleSectionsOpen="true" activeSectionName="{!v.activeSections}">
+                    
+                    <!--Account -->
+                    <lightning:accordionSection name="account" label="Account">
+                        <aura:set attribute="body">
+                            <div class="container">
+                                <div class="row slds-card bg-gary slds-p-vertical--large">
+                                    <div class="column slds-p-horizontal--large">
+                                        <div class="custom-box">
+                                            <lightning:input type="radio" label="Create New" name="account" onclick="{!c.accNewMtd }" checked="true"/>
+                                            <div class="slds-box slds-m-top--medium bg-white">
+                                                <lightning:input type="text" label="Account Name" name="account" required="true" value="{!v.accountToSave.Name}"/>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="column slds-p-horizontal--large">
+                                        <div class="custom-box">
+                                            <lightning:input type="radio" label="Choose Existing" name="account" onclick="{!c.accOldMtd}"/>
+                                            <div class="slds-box slds-m-top--medium bg-white">
+                                                <c:AuraLookup sObjectApiName="Account"
+                                                              fieldApiName="Name"
+                                                              subFieldApiName="AccountNumber"
+                                                              label="Account"
+                                                              placeholder="Search Account"
+                                                              selection="{!v.accountValue}" 
+                                                              onSelected="{!c.handleSelected}"
+                                                              />
+                                                
+                                            </div>
+                                          <!--  <lightning:textarea name="input" value="" placeholder="Account Matches" maxlength="140" />-->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="divider">OR</div>
+                            </div>
+                        </aura:set>
+                    </lightning:accordionSection> 
+                    
+                    <!--Contact -->
+                    <lightning:accordionSection name="contact" label="Contact">
+                        <aura:set attribute="body">
+                            <div class="container">
+                                <div class="row slds-card bg-gary slds-p-vertical--large">
+                                    <div class="column slds-p-horizontal--large">
+                                        <div class="custom-box">
+                                            <lightning:input type="radio" label="Create New" name="contact" onclick="{!c.conNewMtd}" checked="true"/>
+                                            <div class="slds-box slds-m-top--medium bg-white">
+                                                <lightning:combobox name="none" label="Salutations" value="NONE" placeholder="--NONE--" options="{! v.ContactSalutationOptions }"/>
+                                                <lightning:input type="text" label="First Name" name="firstName" value="{!v.ContactToSave.FirstName}" />
+                                                <lightning:input type="text" label="Last Name" name="lastName" required="true" class="slds-m-top--small" value="{!v.ContactToSave.LastName}"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="column slds-p-horizontal--large">
+                                        <div class="custom-box">
+                                            <lightning:input type="radio" label="Choose Existing" name="contact" onclick="{!c.oldConMtd}" />
+                                            
+                                            <c:AuraLookup sObjectApiName="Contact"
+                                                          fieldApiName="Name"
+                                                          subFieldApiName="Email"
+                                                          placeholder="Search Contact"
+                                                          selection="{!v.contactValue}" 
+                                                          onSelected="{!c.handleSelected}"/>
+                                            
+                                        </div>
+                                        
+                                        
+                                        
+                                    </div>
+                                </div>
+                                <div class="divider">OR</div>
+                            </div>
+                        </aura:set>
+                    </lightning:accordionSection> 
+                    
+                    <!--Opportunity -->
+                    <lightning:accordionSection name="opportunity" label="Opportunity">
+                        <aura:set attribute="body">
+                            <div class="container">
+                                <div class="row slds-card bg-gary slds-p-vertical--large">
+                                    <div class="column slds-p-horizontal--large">
+                                        <div class="custom-box">
+                                            <lightning:input type="radio" label="Create New" name="opportunity" onclick="{!c.oppNewMtd}" checked="{!v.isOppNew}"/>
+                                            <div class="slds-box slds-m-top--medium bg-white">
+                                                <lightning:input type="text" label="Opportunity Name" name="opportunity" value="{!v.OppToSave.Name}"/>
+                                            </div>
+                                            <lightning:input type="radio" label="Don't create an opportunity upon conversion" name="test2" onclick="{!c.oppCreateMtd}" checked="{!v.isOppCheckboxActive}"/>
+                                        </div>
+                                    </div>
+                                    <div class="column slds-p-horizontal--large">
+                                       <!-- <div class="custom-box">
+                                            <lightning:input type="radio" label="Choose Existing"  name="opportunity" onclick="{!c.oppOldMtd}" checked="{!v.isOppOld}" />
+                                            <c:AuraLookup sObjectApiName="Opportunit__c"
+                                                          fieldApiName="Name"
+                                                          placeholder="To find opportunity, choose an existing account"
+                                                          selection="{!v.opportunityValue}" 
+                                                          onSelected="{!c.handleSelected}"/>
+                                            
+                                        </div>  -->
+                                    </div> 
+                                </div>
+                              <!--  <div class="divider">OR</div>   -->
+                                
+                            </div>
+                        </aura:set>
+                    </lightning:accordionSection> 
+                    
+                    <div class="container">
+                        <div class="row slds-card bg-white slds-p-vertical--large">
+                            <div class="column slds-p-horizontal--large">
+                                
+                                    
+                                       <lightning:input type="text" label="Record Owner" disabled="true" name="Record Owner" value="{!v.accountToSave.Owner.Name}"/>
+
+                                    
+
+                                
+                               <!-- <div class="custom-box">
+                                               <c:AuraLookup sObjectApiName="User"
+                                                              fieldApiName="Name"
+                                                              placeholder="Search User"
+                                                              selection="{!v.UserValue}" 
+                                                              onSelected="{!c.handleSelected}"/>
+                                            </div> -->
+                                
+                            </div>
+                              <div class="column slds-p-horizontal-large">
+                                            <div class="custom-box">
+                                                <lightning:combobox name="none" label="Converted Status" value="Converted"  options="{!v.LeadConvertOptions }" checked="true"/>
+                                                
+                                            </div>
+                                        </div> 
+                        </div>
+                        
+                    </div>
+                    
+                </lightning:accordion>
+            </div> 
+            
+            <!-- <footer class="slds-modal__footer">
+                <lightning:button variant="neutral"
+                                  label="Cancel"
+                                  title="Cancel"
+                                  onclick="{! c.closeModel }" />
+                
+            </footer> -->
+            
+            <div class="modal-footer slds-modal__footer slds-size_1-of-1">
+                <div class="forceChangeRecordTypeFooter">
+                    <ui:button class="slds-button slds-button_neutral" label="Cancel" press="{! c.closeModel }"/> 
+                    <ui:button class="slds-button slds-button--brand" label="Converted" press="{!c.submitDetails}"/>
+                </div>
+            </div>
+            
+            
+      
+            
+        </div>
+    </aura:if>
+    <aura:if isTrue="{!v.CallLwc}">
+                <c:leadSucessPage recordId="{!v.accId}" conId="{!v.conId}" oppId="{!v.oppId}" />
+        <!-- aura:id="lWCComponent2" -->
+    </aura:if>
+   
+    <!-- https://developer.salesforce.com/docs/component-library/bundle/lightning:accordion/example#lightningcomponentdemo:exampleAccordionMultiple -->
+    
+</aura:component>
