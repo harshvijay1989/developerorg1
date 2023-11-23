@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Dispatch_Field_Required_On_StageDelivery</fullName>
-    <active>true</active>
-    <errorConditionFormula>And(ISPICKVAL(Status__c,&apos;Delivery&apos;),OR(ISBLANK(  EndDate__c )))</errorConditionFormula>
-    <errorMessage>Dispatch End Date is required when Stage is &quot;Delivery&quot;</errorMessage>
-</ValidationRule>
