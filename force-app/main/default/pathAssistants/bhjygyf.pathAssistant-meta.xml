@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<PathAssistant xmlns="http://soap.sforce.com/2006/04/metadata">
-    <active>false</active>
-    <entityName>Lead</entityName>
-    <fieldName>LeadSource</fieldName>
-    <masterLabel>bhjygyf</masterLabel>
-    <recordTypeName>__MASTER__</recordTypeName>
-</PathAssistant>
