@@ -161,6 +161,7 @@
   <types>
     <members>Mass_Application</members>
     <members>standard__AllTabSet</members>
+    <members>standard__AppLauncher</members>
     <members>standard__Community</members>
     <members>standard__Content</members>
     <members>standard__LightningBolt</members>

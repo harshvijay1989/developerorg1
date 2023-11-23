@@ -4,6 +4,12 @@
     <attachmentOption>All</attachmentOption>
     <authenticationFailureAction>Bounce</authenticationFailureAction>
     <authorizationFailureAction>Discard</authorizationFailureAction>
+    <emailServicesAddresses>
+        <developerName>shahrukh</developerName>
+        <isActive>true</isActive>
+        <localPart>shahrukh</localPart>
+        <runAsUser>vikas.joshi@crmlanding.in.dev1</runAsUser>
+    </emailServicesAddresses>
     <functionInactiveAction>Bounce</functionInactiveAction>
     <functionName>EmailToCase</functionName>
     <isActive>true</isActive>
